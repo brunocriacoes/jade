@@ -25,6 +25,7 @@ body {
 .login-box {
     background-color: #1c1c1c;
     padding: 3rem;
+    padding-top: 0;
     border-radius: 8px;
     box-shadow: 1px 4px 12px 0px rgba(0, 0, 0, 0.5);
     text-align: center;
