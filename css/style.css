@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #0f0f0f;
+    background-color: #151515;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,10 +26,10 @@ body {
     background-color: #1c1c1c;
     padding: 3rem;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 4px 12px 0px rgba(0, 0, 0, 0.5);
     text-align: center;
     color: white;
-    width: 400px;
+    width: 450px;
 }
 
 .login-box-logo {
@@ -40,12 +40,11 @@ body {
 }
 
 .logo {
-    background-image: url('../assets/image/logo.png');
+    background-image: url('../assets/image/logo/logo.png');
     background-size: cover;
     height: 150px;
     width: 150px;
     margin: 0 auto;
-    margin-left: 70px;
 }
 
 h2 {
@@ -54,14 +53,16 @@ h2 {
     font-size: 1.5rem;
 }
 
-p {
+.login-box p {
     margin: 0.5rem 0;
     font-size: 0.9rem;
+    color: #aaa;
 }
 
 a {
-    color: #007bff;
+    color: #ffffff;
     text-decoration: none;
+    font-weight: 600;
 }
 
 a:hover {
@@ -69,7 +70,10 @@ a:hover {
 }
 
 form {
-    margin-top: 1rem;
+    margin-top: 2rem;
+    display: grid;
+    gap: 1rem;
+
 }
 
 .input-group {
@@ -77,22 +81,39 @@ form {
     text-align: left;
 }
 
-label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-size: 0.9rem;
-    color: #aaa;
-}
-
 input[type="email"],
 input[type="password"] {
     width: 100%;
+    height: 45px;
     padding: 0.5rem;
     margin: 0;
-    border: 1px solid #333;
+    border: 1px solid #232323;
     border-radius: 4px;
-    background-color: #222;
+    background-color: #121212;
     color: white;
+    padding-left: 30px;
+}
+
+.input-email {
+    position: relative;
+}
+
+.input-password {
+    position: relative;
+}
+
+.mail {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.lock {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
 }
 
 .login-btn {
@@ -104,10 +125,25 @@ input[type="password"] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
 }
 
 .login-btn:hover {
     background-color: #0056b3;
+}
+
+.box-or {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    gap: 0.5rem;
+}
+
+.box-or div {
+    width: 100%;
+    border: #333 solid 0.1px;
 }
 
 .or {
@@ -118,6 +154,8 @@ input[type="password"] {
 .social-buttons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
 
 .social-btn {
@@ -126,27 +164,18 @@ input[type="password"] {
     border-radius: 4px;
     color: white;
     font-size: 1.5rem;
-    padding: 0.5rem;
+    padding: 0.2rem;
     cursor: pointer;
-    width: 30%;
+    width: 40%;
+    box-shadow: 0 3px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
 .social-btn:hover {
     background-color: #555;
 }
 
-.social-btn.apple::before {
-    content: "\f8ff";
-    /* Icone Apple */
-    font-family: 'Font Awesome 5 Free';
-    /* Certifique-se de ter o Font Awesome incluído no projeto */
-    font-weight: 900;
-}
+.social-btn.apple::before {}
 
-.social-btn.google::before {
-    content: "G";
-}
+.social-btn.google::before {}
 
-.social-btn.microsoft::before {
-    content: "X";
-}
+.social-btn.twitter::before {}
