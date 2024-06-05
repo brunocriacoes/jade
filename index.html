@@ -13,45 +13,32 @@
     <div class="container">
         <div class="login-box">
             <div class="login-box-logo">
-                <div class="logo"></div>
+                <img src="./assets/image/logo/logo.png" alt="logo" width="150" height="150" class="logo">
             </div>
-            <h2>Welcome Back</h2>
-            <p>Don't have an account yet? <a href="#">Sign up</a></p>
+            <h2>Bem-vindo de volta</h2>
+            <p>Não tem uma conta ainda? <a href="#">Cadastre-se</a></p>
+            <div class="alert alert-success">Login realizado com sucesso!</div>
+            <div class="alert alert-error">Algo deu errado. Tente novamente.</div>
             <form>
                 <div class="input-group">
                     <div class="input-email">
                         <img src="./assets/image/icon/correspondencia.png" alt="email" width="15" height="15"
                             class="mail">
-                        <input type="email" id="email" name="email" required placeholder="email address">
+                        <input type="email" id="email" name="email" required placeholder="endereço de email">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-password">
                         <img src="./assets/image/icon/cadeado.png" alt="password" width="15" height="15" class="lock">
-                        <input type="password" id="password" name="password" required placeholder="password">
+                        <input type="password" id="password" name="password" required placeholder="senha">
                     </div>
                 </div>
                 <button type="submit" class="login-btn">Login</button>
+                <p><a href="#">Esqueceu sua senha?</a></p>
             </form>
-            <div class="box-or">
-                <div></div>
-                <p class="or">OR</p>
-                <div></div>
-            </div>
-            <div class="social-buttons">
-                <button class="social-btn apple">
-                    <img src="./assets/image/icon/apple.png" alt="apple" width="15" height="15">
-                </button>
-                <button class="social-btn google">
-                    <img src="./assets/image/icon/google.png" alt="google" width="15" height="15">
-                </button>
-                <button class="social-btn twitter">
-                    <img src="./assets/image/icon/twitter.png" alt="twitter" width="15" height="15">
-                </button>
-            </div>
         </div>
     </div>
-    <script type="module" defer src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
 </body>
 
 </html>
