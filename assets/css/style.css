@@ -41,7 +41,7 @@ body {
 }
 
 .logo {
-    background-image: url('../assets/image/logo/logo.png');
+    background-image: url('../image/logo/logo.png');
     background-size: cover;
     height: 150px;
     width: 150px;
