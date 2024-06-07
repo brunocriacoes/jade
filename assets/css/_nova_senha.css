@@ -6,7 +6,7 @@
     height: 100%;
 }
 
-.login-box {
+.nova-senha-box {
     background-color: #1c1c1c;
     padding: 3rem;
     border-radius: 8px;
@@ -16,7 +16,7 @@
     width: 400px;
 }
 
-.login-box-logo {
+.nova-senha-box-logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,7 @@ h2 {
     font-size: 1.5rem;
 }
 
-.login-box p {
+.nova-senha-box p {
     margin: 0.5rem 0;
     font-size: 0.9rem;
     color: #aaa;
@@ -96,7 +96,7 @@ input[type="password"] {
     transform: translateY(-50%);
 }
 
-.login-btn {
+.nova-senha-btn {
     background-color: #007bff;
     color: white;
     padding: 0.7rem;
@@ -109,6 +109,6 @@ input[type="password"] {
     font-weight: 600;
 }
 
-.login-btn:hover {
+.nova-senha-btn:hover {
     background-color: #0056b3;
 }

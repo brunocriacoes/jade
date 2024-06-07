@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/_global.css">
+    <link rel="stylesheet" href="./assets/css/_nova_senha.css">
+    <title>Paramou</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nova-senha-box">
+            <div class="nova-senha-box-logo">
+                <img src="./assets/image/logo/logo.png" alt="logo" width="90" height="90" class="logo">
+            </div>
+            <h2>Redefinição de Senha</h2>
+            <p>Digite sua nova senha e confirme para completar o processo de recuperação de senha.</p>
+            <form class="nova-senha-form" onsubmit="return validarFormulario()">
+                <div class="input-group">
+                    <div class="input-password">
+                        <img src="./assets/image/icon/cadeado.png" alt="password" width="15" height="15" class="lock">
+                        <input type="password" id="senha" name="senha" placeholder="Nova senha">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-password">
+                        <img src="./assets/image/icon/cadeado.png" alt="password" width="15" height="15" class="lock">
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha"
+                            onchange="validarSenha()">
+                    </div>
+                </div>
+                <button type="submit" class="nova-senha-btn">Redefinir Senha</button>
+                <div class="alert alert-success" style="display:none;">Senha redefinida com sucesso!</div>
+                <div class="alert alert-error erro" style="display:none;"></div>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/nova_senha.js"></script>
+</body>
+
+</html>
