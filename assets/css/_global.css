@@ -11,6 +11,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    color: #D2D5DD;
     font-family: Arial, sans-serif;
 }
 
@@ -38,4 +39,8 @@ body {
     background-color: rgba(255, 0, 0, 0.06);
     border-color: rgba(255, 0, 0, 0.8);
 
+}
+
+.container {
+    padding: 20px;
 }
