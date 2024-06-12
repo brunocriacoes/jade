@@ -1,3 +1,32 @@
+:root {
+    --color-bg: #151515;
+    --color-text: #D2D5DD;
+    --color-box-bg: #1c1c1c;
+    --color-input-bg: #121212;
+    --color-input-border: #232323;
+    --color-primary: #007bff;
+    --color-primary-hover: #0056b3;
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    --border-radius: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: var(--color-text);
+    font-family: Arial, sans-serif;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -7,10 +36,10 @@
 }
 
 .login-box {
-    background-color: #1c1c1c;
+    background-color: var(--color-box-bg);
     padding: 3rem;
     border-radius: 8px;
-    box-shadow: 1px 4px 12px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 4px 12px 0px var(--color-shadow);
     text-align: center;
     color: white;
     width: 400px;
@@ -67,28 +96,19 @@ input[type="password"] {
     height: 45px;
     padding: 0.5rem;
     margin: 0;
-    border: 1px solid #232323;
-    border-radius: 4px;
-    background-color: #121212;
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-input-bg);
     color: white;
     padding-left: 30px;
 }
 
-.input-email {
-    position: relative;
-}
-
+.input-email,
 .input-password {
     position: relative;
 }
 
-.mail {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-}
-
+.mail,
 .lock {
     position: absolute;
     top: 50%;
@@ -97,18 +117,18 @@ input[type="password"] {
 }
 
 .login-btn {
-    background-color: #007bff;
+    background-color: var(--color-primary);
     color: white;
     padding: 0.7rem;
     width: 100%;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     font-size: 1rem;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px 0px var(--color-shadow);
     font-weight: 600;
 }
 
 .login-btn:hover {
-    background-color: #0056b3;
+    background-color: var(--color-primary-hover);
 }

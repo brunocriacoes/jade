@@ -1,3 +1,14 @@
+:root {
+    --color-bg: #151515;
+    --color-text: #D2D5DD;
+    --color-success-text: rgb(0, 255, 60);
+    --color-success-bg: rgba(4, 254, 62, 0.06);
+    --color-success-border: rgba(0, 255, 60, 0.8);
+    --color-error-text: rgb(255, 0, 0);
+    --color-error-bg: rgba(255, 0, 0, 0.06);
+    --color-error-border: rgba(255, 0, 0, 0.8);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,13 +16,13 @@
 }
 
 body {
-    background-color: #151515;
+    background-color: var(--color-bg);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    color: #D2D5DD;
+    color: var(--color-text);
     font-family: Arial, sans-serif;
 }
 
@@ -27,18 +38,16 @@ body {
 
 .alert-success {
     text-align: center;
-    color: rgb(0, 255, 60);
-    background-color: rgba(4, 254, 62, 0.06);
-    border-color: rgba(0, 255, 60, 0.8);
-
+    color: var(--color-success-text);
+    background-color: var(--color-success-bg);
+    border-color: var(--color-success-border);
 }
 
 .alert-error {
     text-align: center;
-    color: rgb(255, 0, 0);
-    background-color: rgba(255, 0, 0, 0.06);
-    border-color: rgba(255, 0, 0, 0.8);
-
+    color: var(--color-error-text);
+    background-color: var(--color-error-bg);
+    border-color: var(--color-error-border);
 }
 
 .container {
