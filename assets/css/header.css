@@ -1,15 +1,5 @@
 :root {
-    --color-bg: #333;
-    --color-text: #fff;
-    --color-border: #8c8c8c;
-    --color-border-light: #545454;
-    --color-button: #ff5733;
-    --color-button-hover: #e04e1f;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+    --color-bg-header: #333;
 }
 
 header {
@@ -17,7 +7,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-header);
     color: var(--color-text);
     position: fixed;
     top: 0;
@@ -141,7 +131,7 @@ nav ul li a {
         left: 0;
         display: none;
         width: 100%;
-        background-color: var(--color-bg);
+        background-color: var(--color-bg-header);
         border-top: 1px solid var(--color-border);
     }
 

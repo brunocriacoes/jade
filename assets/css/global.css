@@ -7,6 +7,20 @@
     --color-error-text: rgb(255, 0, 0);
     --color-error-bg: rgba(255, 0, 0, 0.06);
     --color-error-border: rgba(255, 0, 0, 0.8);
+    --color-text: #D2D5DD;
+    --color-border: #8c8c8c;
+    --color-border-light: #545454;
+    --color-button: #ff5733;
+    --color-button-hover: #e04e1f;
+    --color-input-bg: #121212;
+    --color-input-border: #232323;
+    --color-primary: #007bff;
+    --color-primary-hover: #0056b3;
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-link: #ffffff;
+    --color-link-hover: underline;
+    --border-radius: 4px;
+    --color-subtext: #aaa;
 }
 
 * {
