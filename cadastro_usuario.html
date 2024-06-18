@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/cadastro_usuario.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <title>Paramou</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-box-logo">
+            <img src="./assets/image/logo/logo.png" alt="logo" width="50" height="50" class="logo">
+        </div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Usuário</a></li>
+                <li><a href="#">Lojas</a></li>
+                <li><a href="#">Webhook</a></li>
+            </ul>
+            <div class="logout-mobile">
+                <a href="./index.html" class="logout">Sair</a>
+            </div>
+        </nav>
+        <div class="header-box-logout">
+            <a href="./index.html" class="logout">Sair</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Criar Usuário</h2>
+                <hr>
+            </div>
+            <form id="create-user-form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" id="telefone" name="telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rule">Regra</label>
+                        <select id="rule" name="rule" required>
+                            <option value="admin">Admin</option>
+                            <option value="cooperador">Cooperador</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmar-senha">Confirmar Senha</label>
+                        <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Criar</button>
+                    </div>
+                </div>
+                <div class="alert alert-error">Senha fraca</div>
+                <div class="alert alert-error">Senhas não coincidem</div>
+                <div class="alert alert-error">Email já cadastrado</div>
+                <div class="alert alert-success">Salvo com sucesso</div>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="./assets/js/main.js"></script>
+</body>
+
+</html>

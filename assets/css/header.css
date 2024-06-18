@@ -72,6 +72,11 @@ nav ul li a {
     padding: 10px 15px;
 }
 
+nav ul li a:hover {
+    color: var(--color-text-hover);
+    transition: color 0.3s;
+}
+
 .header-box-logout {
     display: flex;
     align-items: center;
