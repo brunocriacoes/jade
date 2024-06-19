@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/listar_usuario.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <title>Paramou</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-box-logo">
+            <img src="./assets/image/logo/logo.png" alt="logo" width="50" height="50" class="logo">
+        </div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav>
+            <ul>
+                <li><a href="./home.html">Início</a></li>
+                <li><a href="./listar_usuario.html">Usuário</a></li>
+                <li><a href="#">Lojas</a></li>
+                <li><a href="#">Webhook</a></li>
+            </ul>
+            <div class="logout-mobile">
+                <a href="./index.html" class="logout">Sair</a>
+            </div>
+        </nav>
+        <div class="header-box-logout">
+            <a href="./index.html" class="logout">Sair</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="user-list-header">
+            <h2>Lista de Usuários</h2>
+            <div class="user-actions">
+                <input type="text" id="search" placeholder="Buscar usuário">
+                <a id="add-user" href="./cadastro_usuario.html" class="add-user">Adicionar Usuário</a>
+            </div>
+        </div>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Gravatar</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Status</th>
+                    <th>Regra</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="user-table-body">
+                <tr>
+                    <td><img src="https://www.gravatar.com/avatar/1" class="image-gravatar" alt="Gravatar" width="50"
+                            height="50"></td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td>(123) 456-7890</td>
+                    <td>Active</td>
+                    <td>User</td>
+                    <td>
+                        <div class="acao">
+
+                            <button class="edit-user"><img src="./assets/image/icon/editar.png" alt="Gravatar"
+                                    width="18" height="18"></button><button class="delete-user"><img
+                                    src="./assets/image/icon/lixeira.png" alt="Gravatar" width="18"
+                                    height="18"></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="https://www.gravatar.com/avatar/2" class="image-gravatar" alt="Gravatar" width="50"
+                            height="50"></td>
+                    <td>Jane Smith</td>
+                    <td>janesmith@example.com</td>
+                    <td>(987) 654-3210</td>
+                    <td>Inactive</td>
+                    <td>Admin</td>
+                    <td>
+                        <div class="acao">
+
+                            <button class="edit-user"><img src="./assets/image/icon/editar.png" alt="Gravatar"
+                                    width="18" height="18"></button><button class="delete-user"><img
+                                    src="./assets/image/icon/lixeira.png" alt="Gravatar" width="18"
+                                    height="18"></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="https://www.gravatar.com/avatar/3" class="image-gravatar" alt="Gravatar" width="50"
+                            height="50"></td>
+                    <td>Mike Johnson</td>
+                    <td>mikejohnson@example.com</td>
+                    <td>(555) 123-4567</td>
+                    <td>Active</td>
+                    <td>User</td>
+                    <td>
+                        <div class="acao">
+
+                            <button class="edit-user"><img src="./assets/image/icon/editar.png" alt="Gravatar"
+                                    width="18" height="18"></button><button class="delete-user"><img
+                                    src="./assets/image/icon/lixeira.png" alt="Gravatar" width="18"
+                                    height="18"></button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="user-list-footer">
+            <div class="user-count">Total de usuários: <span id="user-count">0</span></div>
+            <div class="pagination">
+                <button id="prev-page">Anterior</button>
+                <span id="page-info">Página 1 de 1</span>
+                <button id="next-page">Próximo</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./assets/js/main.js"></script>
+</body>
+
+</html>
