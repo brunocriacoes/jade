@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const closeDialogBtn = document.getElementById("close-dialog-btn");
-  const webhookTableBody = document.getElementById("webhook-table-body");
+  const webhookTableBody = document.querySelector(".webhook-table-body");
   const webhookDialog = document.getElementById("webhook-dialog");
   const webhookDetails = document.getElementById("webhook-details");
 
