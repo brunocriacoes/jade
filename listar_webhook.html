@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/webhook.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/dialog.css">
+    <link rel="stylesheet" href="./assets/css/table.css">
+    <title>Paramou - Webhook</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-box-logo">
+            <img src="./assets/image/logo/logo.png" alt="logo" width="50" height="50" class="logo">
+        </div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav>
+            <ul>
+                <li><a href="./home.html">Início</a></li>
+                <li><a href="./listar_usuario.html">Usuário</a></li>
+                <li><a href="./listar_loja.html">Lojas</a></li>
+                <li><a href="./listar_webhook.html">Webhook</a></li>
+            </ul>
+            <div class="logout-mobile">
+                <a href="./index.html" class="logout">Sair</a>
+            </div>
+        </nav>
+        <div class="header-box-logout">
+            <a href="./index.html" class="logout">Sair</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="tab-list-header">
+            <h2>Lista de Webhooks</h2>
+            <div class="tab-actions">
+                <input type="text" id="search" placeholder="Buscar Webhook">
+                <a id="add-tab" href="./cadastro_webhook.html" class="add-tab">Adicionar Webhook</a>
+            </div>
+        </div>
+        <div class="tab-list-container">
+            <table class="tab-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                        <th>Origem</th>
+                        <th>Key</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tab-table-body">
+                    <tr>
+                        <td>2023-01-01</td>
+                        <td>100.00</td>
+                        <td>PENDING</td>
+                        <td>ASAAS</td>
+                        <td>00000000100000100010010</td>
+                        <td>
+                            <button class="visualizar-btn"
+                                data-webhook='{"data": "2023-01-01", "valor": 100.00, "status": "PENDING", "origem": "ASAAS", "key": "00000000100000100010010"}'>Visualizar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-list-footer">
+            <div class="tab-count">Total de lojas: <span id="tab-count">2</span></div>
+            <div class="pagination">
+                <button id="prev-page">Anterior</button>
+                <span id="page-info">Página 1 de 1</span>
+                <button id="next-page">Próximo</button>
+            </div>
+        </div>
+    </div>
+    <dialog id="webhook-dialog">
+        <h2>Detalhes do Webhook</h2>
+        <hr>
+        <div class="dialog-content">
+            <pre id="webhook-details"></pre>
+        </div>
+        <div class="dialog-footer">
+            <button id="close-dialog-btn">Fechar</button>
+        </div>
+    </dialog>
+    <script type="module" src="./assets/js/main.js"></script>
+</body>
+
+</html>

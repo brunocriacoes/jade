@@ -1,0 +1,208 @@
+.tab-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tab-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#search {
+    padding: 5px 10px;
+    height: 2.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-input-border);
+    background-color: var(--color-input-bg);
+    color: var(--color-text);
+}
+
+.add-tab {
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    background-color: var(--color-button);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-tab:hover {
+    background-color: var(--color-button-hover);
+}
+
+.tab-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.tab-table th,
+.tab-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.tab-table th {
+    background-color: var(--color-box-bg);
+}
+
+.tab-table thead th {
+    background-color: var(--color-bg-header);
+}
+
+.tab-table tbody tr:nth-child(even) {
+    background-color: var(--color-box-bg);
+}
+
+.tab-table tbody tr:hover {
+    background-color: var(--color-shadow);
+}
+
+.tab-table .acao {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tab-list-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab-count {
+    font-size: 1rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--color-button);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: var(--color-button-hover);
+}
+
+#page-info {
+    font-size: 1rem;
+}
+
+.edit-tab {
+    padding: 5px 10px;
+    border: none;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    background-color: var(--color-button);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-tab {
+    padding: 5px 10px;
+    border: none;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    background-color: var(--color-button);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 85%;
+    }
+
+    .tab-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #search,
+    .add-tab {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .tab-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .tab-table th,
+    .tab-table td {
+        padding: 5px;
+    }
+
+    .tab-table .acao {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-top: 700px;
+    }
+
+    .tab-table,
+    .tab-table thead,
+    .tab-table tbody,
+    .tab-table th,
+    .tab-table td,
+    .tab-table tr {
+        display: block;
+    }
+
+    .tab-table tr {
+        margin-bottom: 15px;
+    }
+
+    .tab-table td {
+        padding: 10px 5px;
+        text-align: center;
+        position: relative;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .tab-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+    }
+
+    .tab-table td:last-child {
+        border-bottom: 2px solid var(--color-border);
+    }
+}

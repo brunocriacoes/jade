@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/listar_loja.css">
     <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/table.css">
     <title>Paramou - Listagem de Lojas</title>
 </head>
 
@@ -26,7 +27,7 @@
                 <li><a href="./home.html">Início</a></li>
                 <li><a href="./listar_usuario.html">Usuário</a></li>
                 <li><a href="./listar_loja.html">Lojas</a></li>
-                <li><a href="#">Webhook</a></li>
+                <li><a href="./listar_webhook.html">Webhook</a></li>
             </ul>
             <div class="logout-mobile">
                 <a href="./index.html" class="logout">Sair</a>
@@ -37,14 +38,14 @@
         </div>
     </header>
     <div class="container">
-        <div class="store-list-header">
+        <div class="tab-list-header">
             <h2>Lista de Lojas</h2>
-            <div class="store-actions">
+            <div class="tab-actions">
                 <input type="text" id="search" placeholder="Buscar loja">
-                <a id="add-store" href="./cadastro_loja.html" class="add-store">Adicionar Loja</a>
+                <a id="add-tab" href="./cadastro_loja.html" class="add-tab">Adicionar Loja</a>
             </div>
         </div>
-        <table class="store-table">
+        <table class="tab-table">
             <thead>
                 <tr>
                     <th>Nome da Loja</th>
@@ -52,7 +53,7 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody id="store-table-body">
+            <tbody id="tab-table-body">
                 <tr>
                     <td>Loja Exemplo 1</td>
                     <td>
@@ -63,8 +64,8 @@
                     </td>
                     <td>
                         <div class="acao">
-                            <button class="edit-store"><img src="./assets/image/icon/editar.png" alt="Gravatar"
-                                    width="18" height="18"></button><button class="delete-store"><img
+                            <button class="edit-tab"><img src="./assets/image/icon/editar.png" alt="Gravatar" width="18"
+                                    height="18"></button><button class="delete-tab"><img
                                     src="./assets/image/icon/lixeira.png" alt="Gravatar" width="18"
                                     height="18"></button>
                         </div>
@@ -80,17 +81,17 @@
                     </td>
                     <td>
                         <div class="acao">
-                            <button class="edit-store"><img src="./assets/image/icon/editar.png" alt="Editar" width="18"
+                            <button class="edit-tab"><img src="./assets/image/icon/editar.png" alt="Editar" width="18"
                                     height="18"></button>
-                            <button class="delete-store"><img src="./assets/image/icon/lixeira.png" alt="Apagar"
+                            <button class="delete-tab"><img src="./assets/image/icon/lixeira.png" alt="Apagar"
                                     width="18" height="18"></button>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="store-list-footer">
-            <div class="store-count">Total de lojas: <span id="store-count">2</span></div>
+        <div class="tab-list-footer">
+            <div class="tab-count">Total de lojas: <span id="tab-count">2</span></div>
             <div class="pagination">
                 <button id="prev-page">Anterior</button>
                 <span id="page-info">Página 1 de 1</span>

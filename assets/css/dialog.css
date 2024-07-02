@@ -1,0 +1,76 @@
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-dialog-bg);
+    color: var(--color-text);
+    padding: 2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px var(--color-shadow);
+    max-width: 600px;
+    min-width: 500px;
+    animation: fadeIn 0.3s ease;
+    font-size: 0.8rem;
+}
+
+dialog>h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+dialog .dialog-content {
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+dialog[closing] {
+    animation: fadeOut 0.2s ease;
+    /* Animação de fechamento */
+}
+
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#close-dialog-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--color-button);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+#close-dialog-btn:hover {
+    background-color: var(--color-button-hover);
+}
