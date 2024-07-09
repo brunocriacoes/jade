@@ -1,26 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const closeDialogBtn = document.getElementById("close-dialog-btn");
-  const webhookTableBody = document.querySelector(".webhook-table-body");
-  const webhookDialog = document.getElementById("webhook-dialog");
-  const webhookDetails = document.getElementById("webhook-details");
+import { App } from "./App.js";
+import {render as render_webhook} from "./pages/listar-webhook.js"
 
-  webhookTableBody.addEventListener("click", (event) => {
-    if (event.target.classList.contains("visualizar-btn")) {
-      const webhookData = JSON.parse(event.target.getAttribute("data-webhook"));
-      webhookDetails.textContent = JSON.stringify(webhookData, null, 2);
-      webhookDialog.showModal();
-    }
-  });
-
-  closeDialogBtn.addEventListener("click", () => {
-    webhookDialog.setAttribute("closing", "");
-    webhookDialog.addEventListener(
-      "animationend",
-      () => {
-        webhookDialog.removeAttribute("closing");
-        webhookDialog.close();
-      },
-      { once: true }
-    );
-  });
-});
+window.onload = _ => { 
+	let app = new App();
+	app.add("listar_webhook", render_webhook)
+}
