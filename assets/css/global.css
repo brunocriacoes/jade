@@ -13,6 +13,7 @@
     --color-border: #444;
     --color-border-light: #666;
     --color-button: #ff4500;
+    --color-loading: #ff4500;
     --color-button-hover: #ff6347;
     --color-input-text: #ffffff;
     --color-input-bg: #121212;
@@ -31,6 +32,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 
 body {
     background-color: var(--color-bg);
@@ -68,6 +70,10 @@ body {
 }
 
 .submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     background-color: var(--color-primary);
     color: var(--color-text);
     padding: 0.7rem;
@@ -78,8 +84,29 @@ body {
     font-size: 1rem;
     box-shadow: 3px 3px 0px var(--color-shadow);
     font-weight: 600;
+    color: var(--color-text);
 }
 
 .submit-btn:hover {
     background-color: var(--color-primary-hover);
+}
+
+.load {
+    border: 3px solid #00000025;
+    border-top: 3px solid var(--color-loading);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
