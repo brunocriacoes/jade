@@ -1,5 +1,5 @@
-// import { alertCuston } from "./alert";
-// import load from "./load";
+import { alertCuston } from "./alert.js";
+import { load } from "./load.js";
 
 class login {
   constructor(formElementId) {
@@ -9,8 +9,8 @@ class login {
 
   async onSubmit(event) {
     event.preventDefault();
-    // const alert = new alertCuston("box-alert");
-    // const loadCuston = new load("load");
+    const alert = new alertCuston("box-alert");
+    const loadCuston = new load("load");
     const formData = new FormData(this.loginForm);
     const data = Object.fromEntries(formData.entries());
     if (!this.validate(data)) {
@@ -18,10 +18,10 @@ class login {
       return;
     }
     console.log(data);
-    // loadCuston.init();
+    loadCuston.init();
 
     setInterval(() => {
-      //   alert.success("Login efetuado com sucesso");
+      alert.success("Login efetuado com sucesso");
     }, 1000);
 
     setInterval(() => {
