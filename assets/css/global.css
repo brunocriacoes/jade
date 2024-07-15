@@ -90,19 +90,3 @@ body {
 .submit-btn:hover {
     background-color: var(--color-primary-hover);
 }
-
-.load {
-    border: 3px solid #00000025;
-    border-top: 3px solid var(--color-loading);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 1s linear infinite;
-    display: none;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
