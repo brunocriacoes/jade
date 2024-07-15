@@ -55,14 +55,14 @@ body {
     opacity: 0.9;
 }
 
-.alert-success {
+.alert__sucesso {
     text-align: center;
     color: var(--color-success-text);
     background-color: var(--color-success-bg);
     border-color: var(--color-success-border);
 }
 
-.alert-error {
+.alert__error {
     text-align: center;
     color: var(--color-error-text);
     background-color: var(--color-error-bg);
@@ -102,11 +102,7 @@ body {
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
+    to {
         transform: rotate(360deg);
     }
 }

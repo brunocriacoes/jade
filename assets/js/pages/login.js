@@ -1,36 +1,34 @@
-import { alertCuston } from "./alert.js";
-import { load } from "./load.js";
+import { form } from "../utils/form.js";
+import { feedback, loadBtn, to } from "../helper/helper.js";
 
-class login {
+class login extends form {
   constructor(formElementId) {
-    this.loginForm = document.getElementById(formElementId);
-    this.addEventListeners();
+    super(formElementId);
   }
 
   async onSubmit(event) {
     event.preventDefault();
-    const alert = new alertCuston("box-alert");
-    const loadCuston = new load("load");
-    const formData = new FormData(this.loginForm);
+    const formData = new FormData(this.form);
     const data = Object.fromEntries(formData.entries());
     if (!this.validate(data)) {
-      alert.danger("Preencha todos os campos");
+      feedback(this.form, "Preencha todos os campos", false);
       return;
     }
-    console.log(data);
-    loadCuston.init();
+    const loadButton = loadBtn(this.form.querySelector(".submit-btn"));
 
     setInterval(() => {
-      alert.success("Login efetuado com sucesso");
+      loadButton();
     }, 1000);
 
+    console.log(data);
     setInterval(() => {
-      window.location.href = "/home.html";
+      to("home");
     }, 3000);
+    feedback(this.form, "Usuário logado com sucesso");
   }
 
   addEventListeners() {
-    this.loginForm.addEventListener("submit", this.onSubmit.bind(this));
+    this.form.addEventListener("submit", this.onSubmit.bind(this));
   }
 
   validate(data) {
