@@ -75,3 +75,52 @@ export function getParam(name) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
+
+export function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+export function getFormData(form) {
+  const formData = new FormData(form);
+  return Object.fromEntries(formData.entries());
+}
+
+export function getFormErrors(form, rules) {
+  const data = getFormData(form);
+  return validate(data, rules);
+}
+
+export function setFormErrors(form, errors) {
+  for (var key in errors) {
+    var $input = form.querySelector(`[name=${key}]`);
+    var $error = form.querySelector(`[data-error-for=${key}]`);
+    $input.classList.add("error");
+    $error.textContent = errors[key];
+  }
+}
+
+export function clearFormErrors(form) {
+  var $inputs = form.querySelectorAll("input");
+  $inputs.forEach(($input) => {
+    $input.classList.remove("error");
+  });
+  var $errors = form.querySelectorAll("[data-error-for]");
+  $errors.forEach(($error) => {
+    $error.textContent = "";
+  });
+}
+
+export function clearForm(form) {
+  var $inputs = form.querySelectorAll("input");
+  $inputs.forEach(($input) => {
+    $input.value = "";
+  });
+}
+
+export function setFormData(form, data) {
+  for (var key in data) {
+    var $input = form.querySelector(`[name=${key}]`);
+    $input.value = data[key];
+  }
+}
