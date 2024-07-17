@@ -4,6 +4,7 @@ export class dataTable {
     this.searchElement = document.getElementById(searchElementId);
     this.data();
     this.addEventListenersSearch();
+    this.tableCount();
   }
   data() {}
 
@@ -12,4 +13,10 @@ export class dataTable {
   injectDataDom(data) {}
 
   search() {}
+
+  tableCount() {
+    const countHtml = document.getElementById("tab-count");
+    const count = this.table.rows.length - 1;
+    countHtml.textContent = count;
+  }
 }

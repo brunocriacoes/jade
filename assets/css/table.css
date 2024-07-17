@@ -80,6 +80,10 @@
     font-size: 1rem;
 }
 
+.tab-count span {
+    font-weight: bold;
+}
+
 .pagination {
     display: flex;
     justify-content: center;
