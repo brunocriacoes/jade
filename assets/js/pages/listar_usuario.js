@@ -1,4 +1,4 @@
-import { blade } from "../helper/helper.js";
+import { blade, searchDataTable } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
 
 class userList extends dataTable {
@@ -9,6 +9,7 @@ class userList extends dataTable {
   data() {
     const data = [
       {
+        id: 1,
         image: "https://www.gravatar.com/avatar/1",
         name: "John Doe",
         email: "johndoe@example.com",
@@ -17,8 +18,27 @@ class userList extends dataTable {
         role: "User",
       },
       {
+        id: 2,
         image: "https://www.gravatar.com/avatar/2",
         name: "Victor",
+        email: "janedoe@example.com",
+        phone: "(123) 456-7890",
+        status: "Active",
+        role: "User",
+      },
+      {
+        id: 3,
+        image: "https://www.gravatar.com/avatar/3",
+        name: "Jane Doe2",
+        email: "janedoe@example.com",
+        phone: "(123) 456-7890",
+        status: "Active",
+        role: "User",
+      },
+      {
+        id: 4,
+        image: "https://www.gravatar.com/avatar/4",
+        name: "Jane Doe3",
         email: "janedoe@example.com",
         phone: "(123) 456-7890",
         status: "Active",
@@ -29,26 +49,23 @@ class userList extends dataTable {
   }
 
   injectDataDom(data) {
-    const templateElement = document.getElementById("row-template");
     const containerElement = this.table.querySelector("tbody");
-    blade(data, templateElement, containerElement);
+    const templateElement = document.getElementById("row-template");
+    blade(
+      searchDataTable(data, this.searchElement.value),
+      templateElement,
+      containerElement
+    );
   }
 
-  search(event) {
-    const input = event.searchElement;
-    const filter = input.value.trim().toUpperCase();
-    const rows = event.table.querySelectorAll("tbody tr");
-    rows.forEach((row) => {
-      const cells = row.querySelectorAll("td");
-      const match = Array.from(cells).some((cell) =>
-        cell.textContent.trim().toUpperCase().includes(filter)
-      );
-      row.style.display = match ? "" : "none";
+  addEventListeners() {
+    this.searchElement.addEventListener("input", () => {
+      setTimeout(() => {
+        this.data();
+        this.paginate();
+        this.tableCount();
+      }, 1000);
     });
-  }
-
-  addEventListenersSearch() {
-    this.searchElement.addEventListener("keyup", (_) => this.search(this));
   }
 }
 

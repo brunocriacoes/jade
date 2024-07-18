@@ -58,36 +58,40 @@
                 </tr>
             </thead>
             <tbody id="tab-table-body">
-                <template id="row-template">
-                    <tr>
-                        <td><img src="${image}" class="image-gravatar" alt="Gravatar" width="50" height="50"></td>
-                        <td>${name}</td>
-                        <td>${email}</td>
-                        <td>${phone}</td>
-                        <td>${status}</td>
-                        <td>${role}</td>
-                        <td>
-                            <div class="acao">
-                                <button class="edit-tab">
-                                    <img src="./assets/image/icon/editar.png" alt="Gravatar" width="18" height="18">
-                                </button>
-                                <button class="delete-tab">
-                                    <img src="./assets/image/icon/lixeira.png" alt="Gravatar" width="18" height="18">
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </template>
+
             </tbody>
         </table>
+
         <div class="tab-list-footer">
             <div class="tab-count">Total de usuários: <span id="tab-count"></span></div>
             <div class="pagination">
-                <button id="prev-page">Anterior</button>
-                <span id="page-info">Página 1 de 1</span>
-                <button id="next-page">Próximo</button>
+                <button id="prev-section-table">Anterior</button>
+                <span id="page-info"></span>
+                <button id="next-section-table">Próximo</button>
             </div>
         </div>
+    </div>
+    <div>
+        <template id="row-template">
+            <tr>
+                <td><img src="${image}" class="image-gravatar" alt="Gravatar" width="50" height="50"></td>
+                <td>${name}</td>
+                <td>${email}</td>
+                <td>${phone}</td>
+                <td>${status}</td>
+                <td>${role}</td>
+                <td>
+                    <div class="acao">
+                        <button class="edit-tab" id="edit-user">
+                            <img src="./assets/image/icon/editar.png" alt="Gravatar" width="18" height="18">
+                        </button>
+                        <button class="delete-tab" id="delete-user">
+                            <img src="./assets/image/icon/lixeira.png" alt="Gravatar" width="18" height="18">
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </template>
     </div>
     <script type="module" src="./assets/js/main.js"></script>
 </body>

@@ -57,7 +57,7 @@ export function to(path) {
 }
 
 export function blade(data, templateElement, containerElement) {
-  var template = templateElement.innerHTML;
+  var template = templateElement.innerHTML || "";
   containerElement.innerHTML = "";
   data.forEach((item) => {
     var itemHtml = template;
@@ -123,4 +123,18 @@ export function setFormData(form, data) {
     var $input = form.querySelector(`[name=${key}]`);
     $input.value = data[key];
   }
+}
+
+export function searchDataTable(data, searchValue) {
+  return (
+    data?.filter((item) => {
+      if (!searchValue) return true;
+      return Object.values(item).some((value) => {
+        return value
+          .toString()
+          .toLowerCase()
+          .includes(searchValue.toLowerCase());
+      });
+    }) || []
+  );
 }
