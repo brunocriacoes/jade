@@ -53,6 +53,7 @@ body {
     text-align: left;
     font-size: 0.9rem;
     opacity: 0.9;
+    height: fit-content;
 }
 
 .alert__sucesso {

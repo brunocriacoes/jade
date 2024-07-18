@@ -10,60 +10,38 @@ class userList extends dataTable {
     const data = [
       {
         id: 1,
-        image: "https://www.gravatar.com/avatar/1",
+        status: true,
         name: "John Doe",
-        email: "johndoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
       },
       {
         id: 2,
-        image: "https://www.gravatar.com/avatar/2",
+        status: true,
         name: "Victor",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
       },
       {
         id: 3,
-        image: "https://www.gravatar.com/avatar/3",
+        status: true,
         name: "Jane Doe2",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
       },
       {
         id: 4,
-        image: "https://www.gravatar.com/avatar/4",
+        status: false,
         name: "Jane Doe3",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
       },
       {
         id: 5,
-        image: "https://www.gravatar.com/avatar/4",
+        status: false,
         name: "Jane Doe3",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
       },
       {
         id: 6,
-        image: "https://www.gravatar.com/avatar/4",
+        status: true,
         name: "Jane Doe3",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
       },
     ];
-    this.injectDataDom(data);
+    this.injectDataDom(
+      data.map((item) => ({ ...item, status: item.status ? "checked" : "" }))
+    );
   }
 
   injectDataDom(data) {
@@ -88,5 +66,5 @@ class userList extends dataTable {
 }
 
 export function render() {
-  new userList("table-user", "search");
+  new userList("table-loja", "search");
 }

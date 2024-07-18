@@ -138,3 +138,23 @@ export function searchDataTable(data, searchValue) {
     }) || []
   );
 }
+
+export function validateFieldsEmpty(data, formElement) {
+  var errors = {};
+  for (var key in data) {
+    if (!data[key]) {
+      errors[key] = "Campo obrigatório";
+    }
+  }
+  if (Object.keys(errors).length) {
+    feedback(
+      formElement,
+      `Campo ${Object.keys(errors)[0]
+        .replace(/[-_]/g, " ")
+        .replace(/^\w/, (c) => c.toUpperCase())} é obrigatório`,
+      false
+    );
+    return false;
+  }
+  return true;
+}

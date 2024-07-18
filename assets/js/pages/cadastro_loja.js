@@ -1,5 +1,10 @@
 import { form } from "../utils/form.js";
-import { feedback, loadBtn, to } from "../helper/helper.js";
+import {
+  feedback,
+  loadBtn,
+  to,
+  validateFieldsEmpty,
+} from "../helper/helper.js";
 
 class userCreate extends form {
   constructor(formElementId) {
@@ -16,9 +21,9 @@ class userCreate extends form {
       loadButton();
     }, 1000);
     setInterval(() => {
-      to("listar_usuario");
+      to("listar_loja");
     }, 3000);
-    feedback(this.form, "Usuário criado com sucesso");
+    feedback(this.form, "Loja criada com sucesso");
   }
 
   addEventListeners() {
@@ -26,20 +31,10 @@ class userCreate extends form {
   }
 
   validate(data) {
-    if (!validateFieldsEmpty(data, this.form)) return false;
-
-    if (data.password !== data.confirm_password) {
-      feedback(this.form, "As senhas não são iguais", false);
-      return false;
-    }
-    if (data.password.length < 6) {
-      feedback(this.form, "A senha deve ter no mínimo 6 caracteres", false);
-      return false;
-    }
-    return true;
+    return validateFieldsEmpty(data, this.form);
   }
 }
 
 export function render() {
-  new userCreate("create-user-form");
+  new userCreate("create-store-form");
 }

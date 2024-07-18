@@ -36,7 +36,7 @@ export class dataTable {
 
   paginate() {
     const rows = this.table.querySelectorAll("tbody tr");
-    const rowsPerPage = 2;
+    const rowsPerPage = 5;
     const pages = Math.ceil(rows.length / rowsPerPage);
     let currentPage = 1;
     const prev = document.getElementById("prev-section-table");
