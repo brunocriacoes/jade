@@ -39,15 +39,8 @@
         </div>
     </header>
     <div class="container">
-        <div class="tab-list-header">
-            <h2>Lista de Webhooks</h2>
-            <div class="tab-actions">
-                <input type="text" id="search" placeholder="Buscar Webhook">
-                <a id="add-tab" href="./cadastro_webhook.html" class="add-tab">Adicionar Webhook</a>
-            </div>
-        </div>
         <div class="tab-list-container">
-            <table class="tab-table">
+            <table class="tab-table" id="table-webhook">
                 <thead>
                     <tr>
                         <th>Data</th>
@@ -59,26 +52,16 @@
                     </tr>
                 </thead>
                 <tbody id="tab-table-body" class="webhook-table-body">
-                    <tr>
-                        <td>2023-01-01</td>
-                        <td>100.00</td>
-                        <td>PENDING</td>
-                        <td>ASAAS</td>
-                        <td>00000000100000100010010</td>
-                        <td>
-                            <button class="visualizar-btn"
-                                data-webhook='{"data": "2023-01-01", "valor": 100.00, "status": "PENDING", "origem": "ASAAS", "key": "00000000100000100010010"}'>Visualizar</button>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
         <div class="tab-list-footer">
-            <div class="tab-count">Total de lojas: <span id="tab-count">2</span></div>
+            <div class="tab-count">Total de usuários: <span id="tab-count"></span></div>
             <div class="pagination">
-                <button id="prev-page">Anterior</button>
-                <span id="page-info">Página 1 de 1</span>
-                <button id="next-page">Próximo</button>
+                <button id="prev-section-table">Anterior</button>
+                <span id="page-info"></span>
+                <button id="next-section-table">Próximo</button>
             </div>
         </div>
     </div>
@@ -92,6 +75,21 @@
             <button id="close-dialog-btn">Fechar</button>
         </div>
     </dialog>
+    <div>
+        <template id="row-template">
+            <tr>
+                <td>${data}</td>
+                <td>${valor}</td>
+                <td>${status}</td>
+                <td>${origem}</td>
+                <td>${key}</td>
+                <td>
+                    <button class="visualizar-btn" id="visualizar-btn"
+                        data-webhook='{"data": "${data}", "valor": "${valor}", "status": "${status}", "origem": "${origem}", "key": "${key}"}'>Visualizar</button>
+                </td>
+
+        </template>
+    </div>
     <script type="module" src="./assets/js/main.js"></script>
 </body>
 
