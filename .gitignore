@@ -1,0 +1,14 @@
+# Logs e arquivos temporários
+*.log
+*.cache
+*.tmp
+
+# Arquivos de configuração e sensíveis
+.env
+/v1/.env
+
+# Diretórios de IDEs e editores
+/.idea/
+/.vscode/
+*.sublime-project
+*.sublime-workspace
