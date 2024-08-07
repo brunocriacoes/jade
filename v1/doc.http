@@ -1,0 +1,11 @@
+### Variaveis ###
+@base = https://api.paramour.com.br/v1
+
+#### [X] Valida JWT ####
+POST {{base}}/login
+Content-Type: application/json
+
+{
+    "email": "paramour@gamil.com",
+    "senha": "Password@1"
+}
