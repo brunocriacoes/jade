@@ -1,7 +1,8 @@
 ### Variaveis ###
 @base = https://api.paramour.com.br/v1
+@storePublicId = asaas-fdgwsdfgsgdfsgfdwre
 
-#### [X] Valida JWT ####
+#### [ ] Login ####
 POST {{base}}/login
 Content-Type: application/json
 
@@ -9,3 +10,108 @@ Content-Type: application/json
     "email": "paramour@gamil.com",
     "senha": "Password@1"
 }
+
+#### [ ] Listar Lojas ####
+GET {{base}}/store/list
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+#### [ ] Cadastrar Lojas ####
+POST {{base}}/store/register
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "externalId": "",
+    "name": "",
+    "email": "",
+    "apiKeyAsaas": "",
+    "apiKeyBling": ""
+}
+
+#### [ ] Atualizar Lojas ####
+POST {{base}}/store/update
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "publicId": "",
+    "externalId": "",
+    "name": "",
+    "email": "",
+    "apiKeyAsaas": "",
+    "apiKeyBling": ""
+}
+
+#### [ ] status Lojas ####
+POST {{base}}/store/status
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "publicId": "",
+    "status": 1
+}
+
+#### [ ] Deletar Lojas ####
+POST {{base}}/store/delete
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "publicId": ""
+}
+
+#### [ ] Listar Usuarios ####
+GET {{base}}/user/list
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+#### [ ] Criar Usuarios ####
+POST {{base}}/user/create
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "user": "",
+    "email": "",
+    "pass": "",
+    "phone": ""
+}
+
+#### [ ] Editar Usuarios ####
+POST {{base}}/user/update
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "publicId": "",
+    "user": "",
+    "email": "",
+    "pass": "",
+    "phone": "",
+    "status": ""
+}
+
+#### [ ] Deletar Usuarios ####
+POST {{base}}/user/delete
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "publicId": ""
+}
+
+#### [ ] Criar Webhook ####
+POST {{base}}/webhook/create/{{storePublicId}}
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+
+}
+
+#### [ ] Listar Webhook ####
+GET {{base}}/webhook/list
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
