@@ -69,22 +69,10 @@ class userList extends dataTable {
   injectDataDom(data) {
     const containerElement = this.table.querySelector("tbody");
     const templateElement = document.getElementById("row-template");
-    blade(
-      searchDataTable(data, this.searchElement.value),
-      templateElement,
-      containerElement
-    );
+    blade(data, templateElement, containerElement);
   }
 
-  addEventListeners() {
-    this.searchElement.addEventListener("input", () => {
-      debounce(() => {
-        this.data();
-        this.paginate();
-        this.tableCount();
-      }, 1000);
-    });
-  }
+  addEventListeners() {}
 }
 
 export function render() {
