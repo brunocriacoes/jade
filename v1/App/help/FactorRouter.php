@@ -5,7 +5,7 @@ namespace App\help;
 use Core\Request;
 use Core\Response;
 
-class FactorRouterAll
+class FactorRouter
 {
     static function add(array $data)
     {
