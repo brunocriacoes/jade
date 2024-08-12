@@ -69,6 +69,19 @@ class Model
         return false;
     }
 
+    public function paginate(string $table,  $page = 1, $itemsPerPage = 100)
+    {
+        $offset = ($page - 1) * $itemsPerPage;
+        $sql = "SELECT * FROM {$table} ORDER BY date DESC LIMIT :limit OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':limit', $itemsPerPage, \PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, \PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function select($table, $where = '', $params = array())
     {
         try {
