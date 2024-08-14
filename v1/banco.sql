@@ -1,7 +1,7 @@
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     publicId VARCHAR(255) NOT NULL,
-    user VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     pass VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
