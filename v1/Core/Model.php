@@ -16,12 +16,12 @@ class Model
 
     public function __construct()
     {
-        $this->db_type = $_ENV['DB_TYPE'];
-        $this->db_host = $_ENV['DB_HOST'];
-        $this->db_name = $_ENV['DB_NAME'];
-        $this->db_user = $_ENV['DB_USER'];
-        $this->db_pass = $_ENV['DB_PASS'];
-        $this->db_port = $_ENV['DB_PORT'];
+        $this->db_type = Env::get('DB_TYPE');
+        $this->db_host = Env::get('DB_HOST');
+        $this->db_name = Env::get('DB_NAME');
+        $this->db_user = Env::get('DB_USER');
+        $this->db_pass = Env::get('DB_PASS');
+        $this->db_port = Env::get('DB_PORT');
         $this->connect();
     }
 
@@ -72,7 +72,7 @@ class Model
     public function paginate(string $table,  $page = 1, $itemsPerPage = 100)
     {
         $offset = ($page - 1) * $itemsPerPage;
-        $sql = "SELECT * FROM {$table} ORDER BY date DESC LIMIT :limit OFFSET :offset";
+        $sql = "SELECT * FROM {$table} ORDER BY id DESC LIMIT :limit OFFSET :offset";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':limit', $itemsPerPage, \PDO::PARAM_INT);

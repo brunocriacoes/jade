@@ -2,13 +2,19 @@
 
 namespace App\UseCases;
 
+use App\help\Pass;
+use App\Model\User;
+use App\Model\Phone;
+
 class CreateUserCase
 {
     private $params;
+    private $client;
 
     public function __construct($params)
     {
         $this->params = $params;
+        $this->client = new User();
     }
 
     public function validateEmail()
@@ -18,12 +24,18 @@ class CreateUserCase
 
     public function validatePassword()
     {
-        return strlen($this->params['pass']) > 5;
+        return Pass::isValid($this->params['pass']);
+    }
+
+    public function userExist()
+    {
+        $email = $this->params['email'];
+        return !$this->client->emailExist($email);
     }
 
     public function execute()
     {
-        $userModel = new \App\Models\User();
+        $userModel = new User();
         return $userModel->create($this->params);
     }
 }

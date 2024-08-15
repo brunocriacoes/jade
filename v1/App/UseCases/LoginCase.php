@@ -2,34 +2,39 @@
 
 namespace App\UseCases;
 
+use App\Model\User;
+use Core\Jwt;
+use Core\Env;
+
 class LoginCase
 {
     private $email;
-    private $senha;
+    private $pass;
+    private $user;
+    private $jwt;
+
 
     public function __construct($params)
     {
         $this->email = $params['email'];
-        $this->senha = $params['senha'];
+        $this->pass = $params['pass'];
+        $this->user = new User();
+        $this->jwt = new Jwt(Env::get("SECRET"));
     }
 
-    public function validateEmail()
+    public function emailValid()
     {
         return filter_var($this->email, FILTER_VALIDATE_EMAIL);
     }
 
-    public function validatePassword()
+    public function userValid()
     {
-        return strlen($this->senha) > 5;
+        return $this->user->isLogin($this->email, $this->pass);
     }
 
     public function execute()
     {
-        $user = (new \App\Models\User())->getByEmail($this->email);
-        if ($user && password_verify($this->senha, $user['pass'])) {
-            return ["token" => "asdlkgnsdfgksnfdghpksdfgnh"];
-        } else {
-            return ["error" => "Login failed"];
-        }
+        $jwt = $this->jwt->createToken(["email"=>$this->email]);
+        return ["jwt"=>$jwt];
     }
 }

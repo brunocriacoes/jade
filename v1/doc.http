@@ -2,13 +2,13 @@
 @base = https://api.paramour.com.br/v1
 @storePublicId = asaas-fdgwsdfgsgdfsgfdwre
 
-#### [ ] Login ####
+#### [X] Login ####
 POST {{base}}/login
 Content-Type: application/json
 
 {
-    "email": "paramour@gamil.com",
-    "senha": "Password@1"
+    "email": "maxsouza150@gmail.com",
+    "pass": "Password@1"
 }
 
 #### [ ] Listar Lojas ####
@@ -63,20 +63,20 @@ token: asdlkgnsdfgksnfdghpksdfgnh
 }
 
 #### [ ] Listar Usuarios ####
-GET {{base}}/user/list
+GET {{base}}/user/list?page=1&itemsPerPage=100
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
-#### [ ] Criar Usuarios ####
+#### [X] Criar Usuarios ####
 POST {{base}}/user/create
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "user": "",
-    "email": "",
-    "pass": "",
-    "phone": ""
+    "name": "Max",
+    "email": "maxsouza150@gmail.com",
+    "pass": "Password@1",
+    "phone": "432534"
 }
 
 #### [ ] Editar Usuarios ####

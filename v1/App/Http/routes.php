@@ -1,24 +1,25 @@
 <?php
 
-use App\help\FactorRouter;
-
 global $router;
 
-$router->post('/login', FactorRouter::add([
+use App\help\FactorRouter;
+
+
+$router->post('/v1/login', FactorRouter::add([
     "params" => [
         ["email", "E-mail é obrigatório"],
-        ["senha", "Senha é obrigatória"]
+        ["pass", "Senha é obrigatória"]
     ],
     "message" => ["Erro ao realizar login", "Login realizado com sucesso"],
     "case" => \App\UseCases\LoginCase::class,
     "validations" => [
-        ["validateEmail", "E-mail inválido"],
-        ["validatePassword", "Senha inválida"]
+        ["emailValid", "E-mail inválido"],
+        ["userValid", "Usuário ou senha inválido"]
     ],
     "run" => "execute"
 ]));
 
-$router->get('/store/list', FactorRouter::add([
+$router->get('/v1/store/list', FactorRouter::add([
     "params" => [
         ["page", "Página é obrigatória"],
         ["itemsPerPage", "Quantidade de itens por página é obrigatória"]
@@ -29,7 +30,7 @@ $router->get('/store/list', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->post('/store/register', FactorRouter::add([
+$router->post('/v1/store/register', FactorRouter::add([
     "params" => [
         ["externalId", "External ID é obrigatório"],
         ["name", "Nome é obrigatório"],
@@ -46,7 +47,7 @@ $router->post('/store/register', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->post('/store/update', FactorRouter::add([
+$router->post('/v1/store/update', FactorRouter::add([
     "params" => [
         ["publicId", "Public ID é obrigatório"],
         ["externalId", "External ID é obrigatório"],
@@ -64,7 +65,7 @@ $router->post('/store/update', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->post('/store/status', FactorRouter::add([
+$router->post('/v1/store/status', FactorRouter::add([
     "params" => [
         ["publicId", "Public ID é obrigatório"],
         ["status", "Status é obrigatório"]
@@ -77,7 +78,7 @@ $router->post('/store/status', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->post('/store/delete', FactorRouter::add([
+$router->post('/v1/store/delete', FactorRouter::add([
     "params" => [
         ["publicId", "Public ID é obrigatório"]
     ],
@@ -89,7 +90,7 @@ $router->post('/store/delete', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->get('/user/list', FactorRouter::add([
+$router->get('/v1/user/list', FactorRouter::add([
     "params" => [
         ["page", "Página é obrigatória"],
         ["itemsPerPage", "Quantidade de itens por página é obrigatória"]
@@ -100,9 +101,9 @@ $router->get('/user/list', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->post('/user/create', FactorRouter::add([
+$router->post('/v1/user/create', FactorRouter::add([
     "params" => [
-        ["user", "Nome de usuário é obrigatório"],
+        ["name", "Nome de usuário é obrigatório"],
         ["email", "E-mail é obrigatório"],
         ["pass", "Senha é obrigatória"],
         ["phone", "Telefone é obrigatório"]
@@ -111,15 +112,16 @@ $router->post('/user/create', FactorRouter::add([
     "case" => \App\UseCases\CreateUserCase::class,
     "validations" => [
         ["validateEmail", "E-mail inválido"],
-        ["validatePassword", "Senha inválida"]
+        ["validatePassword", "Sua senha deve ter pelo menos 8 caracteres, incluir uma letra maiúscula, uma letra minúscula, um número, e um caractere especial."],
+        ["userExist", "Este e-mail já está sendo ultilizado"]
     ],
     "run" => "execute"
 ]));
 
-$router->post('/user/update', FactorRouter::add([
+$router->post('/v1/user/update', FactorRouter::add([
     "params" => [
         ["publicId", "Public ID é obrigatório"],
-        ["user", "Nome de usuário é obrigatório"],
+        ["name", "Nome de usuário é obrigatório"],
         ["email", "E-mail é obrigatório"],
         ["pass", "Senha é obrigatória"],
         ["phone", "Telefone é obrigatório"],
@@ -134,7 +136,7 @@ $router->post('/user/update', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->post('/user/delete', FactorRouter::add([
+$router->post('/v1/user/delete', FactorRouter::add([
     "params" => [
         ["publicId", "Public ID é obrigatório"]
     ],
@@ -146,7 +148,7 @@ $router->post('/user/delete', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->post('/webhook/create/:storePublicId', FactorRouter::add([
+$router->post('/v1/webhook/create/:storePublicId', FactorRouter::add([
     "params" => [
         ["storePublicId", "Store Public ID é obrigatório"]
     ],
@@ -158,7 +160,7 @@ $router->post('/webhook/create/:storePublicId', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->get('/webhook/list', FactorRouter::add([
+$router->get('/v1/webhook/list', FactorRouter::add([
     "params" => [
         ["page", "Página é obrigatória"],
         ["itemsPerPage", "Quantidade de itens por página é obrigatória"]
