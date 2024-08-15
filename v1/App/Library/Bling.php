@@ -2,17 +2,20 @@
 
 namespace App\Library;
 
-class BlingAPI {
+class BlingAPI
+{
 
     private $apiKey;
     private $baseUrl;
 
-    public function __construct($apiKey) {
+    public function __construct($apiKey)
+    {
         $this->apiKey = $apiKey;
         $this->baseUrl = 'https://bling.com.br/Api/v2/';
     }
 
-    private function request($endpoint, $method = 'GET', $data = null) {
+    private function request($endpoint, $method = 'GET', $data = null)
+    {
         $url = $this->baseUrl . $endpoint . '/json/?apikey=' . $this->apiKey;
 
         $ch = curl_init($url);
@@ -39,7 +42,8 @@ class BlingAPI {
         }
     }
 
-    public function cadastrarWebhook($evento, $url) {
+    public function cadastrarWebhook($evento, $url)
+    {
         $data = [
             'webhook' => [
                 'evento' => $evento,
@@ -49,11 +53,13 @@ class BlingAPI {
         return $this->request('webhook', 'POST', $data);
     }
 
-    public function listarWebhooks() {
+    public function listarWebhooks()
+    {
         return $this->request('webhook');
     }
 
-    public function atualizarStatusPedido($idPedido, $status) {
+    public function atualizarStatusPedido($idPedido, $status)
+    {
         $data = [
             'pedido' => [
                 'id' => $idPedido,
@@ -63,7 +69,8 @@ class BlingAPI {
         return $this->request('pedido', 'POST', $data);
     }
 
-    public function adicionarPdfBoletoPedido($idPedido, $pdfUrl) {
+    public function adicionarPdfBoletoPedido($idPedido, $pdfUrl)
+    {
         $data = [
             'pedido' => [
                 'id' => $idPedido,
@@ -75,11 +82,13 @@ class BlingAPI {
         return $this->request('pedido', 'POST', $data);
     }
 
-    public function listarPedidos() {
+    public function listarPedidos()
+    {
         return $this->request('pedidos');
     }
 
-    public function obterEventosWebhook() {
+    public function obterEventosWebhook()
+    {
         return [
             'pedido_status_alterado',
             'nota_fiscal_emitida',
@@ -87,6 +96,21 @@ class BlingAPI {
             'cliente_cadastrado',
             'produto_cadastrado',
             'cobranca_criada'
+        ];
+    }
+
+    public function obterStatusPedido()
+    {
+        return [
+            'aberto',
+            'fechado',
+            'cancelado',
+            'entregue',
+            'pendente',
+            'em_transito',
+            'devolvido',
+            'em_espera',
+            'finalizado',
         ];
     }
 }
