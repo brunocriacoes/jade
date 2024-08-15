@@ -16,7 +16,7 @@ class User extends Model
 
     static function porter($payload){
         return [
-            "public_id"=>$payload["public_id"],
+            "publicId"=>$payload["publicId"],
             "name"=>$payload["name"],
             "gravata"=>User::get_gravatar_url($payload["email"]),
             "email"=>$payload["email"],
@@ -36,7 +36,7 @@ class User extends Model
     public function create($data)
     {
         $data["pass"] = Crip::pass($data["pass"]);
-        $data["public_id"] = UUIDGenerator::generateUUID();
+        $data["publicId"] = UUIDGenerator::generateUUID();
         $data["status"] = "ACTIVE";
         return $this->insert($this->table, $data);
     }
@@ -51,9 +51,14 @@ class User extends Model
         return count($this->select($this->table, 'email = :email', [':email' => $email])) > 0;
     }
 
-    public function set($id, $data)
-    {
-        return $this->update($this->table, $data, 'id = :id', [':id' => $id]);
+    public function set($publicId, $data)
+    {   
+        unset($data['publicId']);
+        unset($data['email']);
+        if(isset($data['pass'])){
+            $data['pass'] = Crip::pass($data['pass']);
+        }
+        return $this->update($this->table, $data, 'publicId = :publicId', ['publicId' => $publicId]);
     }
 
     public function delete($id)

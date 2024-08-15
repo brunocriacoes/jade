@@ -123,15 +123,26 @@ $router->post('/v1/user/update', FactorRouter::add([
         ["publicId", "Public ID é obrigatório"],
         ["name", "Nome de usuário é obrigatório"],
         ["email", "E-mail é obrigatório"],
-        ["pass", "Senha é obrigatória"],
         ["phone", "Telefone é obrigatório"],
         ["status", "Status é obrigatório"]
     ],
     "message" => ["Erro ao atualizar usuário", "Usuário atualizado com sucesso"],
     "case" => \App\UseCases\UpdateUserCase::class,
     "validations" => [
-        ["validatePublicId", "Public ID inválido"],
-        ["validateEmail", "E-mail inválido"]
+        ["validatePublicId", "Public ID inválido"]
+    ],
+    "run" => "execute"
+]));
+
+$router->post('/v1/user/update/pass', FactorRouter::add([
+    "params" => [
+        ["publicId", "Public ID é obrigatório"],
+        ["pass", "Senha é obrigatório"],
+    ],
+    "message" => ["Erro ao atualizar senha", "Senha atualizada com sucesso"],
+    "case" => \App\UseCases\UpdateUserCase::class,
+    "validations" => [
+        ["validatePublicId", "Public ID inválido"]
     ],
     "run" => "execute"
 ]));
@@ -148,7 +159,7 @@ $router->post('/v1/user/delete', FactorRouter::add([
     "run" => "execute"
 ]));
 
-$router->post('/v1/webhook/create/:storePublicId', FactorRouter::add([
+$router->post('/v1/webhook/create/{storePublicId}', FactorRouter::add([
     "params" => [
         ["storePublicId", "Store Public ID é obrigatório"]
     ],

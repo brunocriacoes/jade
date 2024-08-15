@@ -2,6 +2,8 @@
 
 namespace App\UseCases;
 
+use App\Model\Webhook;
+
 class ListWebhooksCase
 {
     private $params;
@@ -13,7 +15,7 @@ class ListWebhooksCase
 
     public function execute()
     {
-        $webhookModel = new \App\Models\Webhook();
+        $webhookModel = new Webhook();
         return $webhookModel->list($this->params['page'], $this->params['itemsPerPage']);
     }
 }

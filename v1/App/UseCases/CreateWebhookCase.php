@@ -2,6 +2,8 @@
 
 namespace App\UseCases;
 
+use App\Model\Webhook;
+
 class CreateWebhookCase
 {
     private $params;
@@ -18,11 +20,12 @@ class CreateWebhookCase
 
     public function execute()
     {
-        $webhookModel = new \App\Models\Webhook();
+        $webhookModel = new Webhook();
         return $webhookModel->create([
             'storePublicId' => $this->params['storePublicId'],
             'date' => date('Y-m-d H:i:s'),
             'status' => 'active',
+            'payload' => file_get_contents('php://input')
         ]);
     }
 }

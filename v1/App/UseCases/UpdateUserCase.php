@@ -2,6 +2,8 @@
 
 namespace App\UseCases;
 
+use App\Model\User;
+
 class UpdateUserCase
 {
     private $params;
@@ -23,7 +25,7 @@ class UpdateUserCase
 
     public function execute()
     {
-        $userModel = new \App\Models\User();
+        $userModel = new User();
         return $userModel->set($this->params['publicId'], $this->params);
     }
 }

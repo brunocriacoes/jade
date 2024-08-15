@@ -1,6 +1,6 @@
 ### Variaveis ###
 @base = https://api.paramour.com.br/v1
-@storePublicId = asaas-fdgwsdfgsgdfsgfdwre
+@storePublicId = bling-fdgwsdfgsgdfsgfdwre
 
 #### [X] Login ####
 POST {{base}}/login
@@ -62,10 +62,6 @@ token: asdlkgnsdfgksnfdghpksdfgnh
     "publicId": ""
 }
 
-#### [ ] Listar Usuarios ####
-GET {{base}}/user/list?page=1&itemsPerPage=100
-Content-Type: application/json
-token: asdlkgnsdfgksnfdghpksdfgnh
 
 #### [X] Criar Usuarios ####
 POST {{base}}/user/create
@@ -73,24 +69,50 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "name": "Max",
-    "email": "maxsouza150@gmail.com",
+    "name": "Max 2",
+    "email": "maxsouza150@hotmail.com",
     "pass": "Password@1",
     "phone": "432534"
 }
 
-#### [ ] Editar Usuarios ####
+#### [X] Listar Usuarios ####
+GET {{base}}/user/list?page=1&itemsPerPage=100
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+#### [X] Editar Usuarios ####
 POST {{base}}/user/update
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "",
-    "user": "",
-    "email": "",
-    "pass": "",
-    "phone": "",
-    "status": ""
+    "publicId": "3f977a81-be6e-4cd1-9e8b-cf42480b4ace",
+    "name": "Max 1",
+    "phone": "82 99621-1554",
+    "status": "ACTIVE"
+}
+
+#### [X] Atualizar Senha de Usuarios ####
+POST {{base}}/user/update/pass
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "publicId": "3f977a81-be6e-4cd1-9e8b-cf42480b4ace",
+    "pass": "Password@12"
+}
+
+#### [X] Alterar dados do Usuario ####
+POST {{base}}/user/update
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "publicId": "3f977a81-be6e-4cd1-9e8b-cf42480b4ace",
+    "name": "Max Edit",
+    "email": "maxsouza150-edit@gmail.com",
+    "phone": "82 99621-1554",
+    "status": "ACTIVE"
 }
 
 #### [ ] Deletar Usuarios ####
@@ -99,19 +121,20 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": ""
+    "publicId": "3f977a81-be6e-4cd1-9e8b-cf42480b4ace"
 }
 
-#### [ ] Criar Webhook ####
+#### [X] Criar Webhook ####
 POST {{base}}/webhook/create/{{storePublicId}}
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-
+    "id": 42
 }
 
-#### [ ] Listar Webhook ####
-GET {{base}}/webhook/list
+#### [X] Listar Webhook ####
+GET {{base}}/webhook/list?page=1&itemsPerPage=100
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
+
