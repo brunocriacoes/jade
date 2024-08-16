@@ -4,7 +4,6 @@ global $router;
 
 use App\help\FactorRouter;
 
-
 $router->post('/v1/login', FactorRouter::add([
     "params" => [
         ["email", "E-mail é obrigatório"],
@@ -181,5 +180,3 @@ $router->get('/v1/webhook/list', FactorRouter::add([
     "validations" => [],
     "run" => "execute"
 ]));
-
-

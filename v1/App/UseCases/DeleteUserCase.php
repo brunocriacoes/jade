@@ -2,6 +2,8 @@
 
 namespace App\UseCases;
 
+use App\Model\User;
+
 class DeleteUserCase
 {
     private $params;
@@ -18,7 +20,8 @@ class DeleteUserCase
 
     public function execute()
     {
-        $userModel = new \App\Models\User();
-        return $userModel->delete($this->params['publicId']);
+        $userModel = new User();
+        $userModel->delete($this->params['publicId']);
+        return [];
     }
 }

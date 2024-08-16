@@ -2,6 +2,8 @@
 
 namespace App\UseCases;
 
+use App\Model\Store;
+
 class UpdateStoreCase
 {
     private $params;
@@ -23,7 +25,8 @@ class UpdateStoreCase
 
     public function execute()
     {
-        $storeModel = new \App\Models\Store();
-        return $storeModel->set($this->params['publicId'], $this->params);
+        $storeModel = new Store();
+        $storeModel->set($this->params['publicId'], $this->params);
+        return [];
     }
 }

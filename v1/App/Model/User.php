@@ -61,9 +61,9 @@ class User extends Model
         return $this->update($this->table, $data, 'publicId = :publicId', ['publicId' => $publicId]);
     }
 
-    public function delete($id)
+    public function delete($publicId)
     {
-        return $this->query("DELETE FROM {$this->table} WHERE id = :id", [':id' => $id]);
+        return $this->query("DELETE FROM {$this->table} WHERE publicId = :publicId", [':publicId' => $publicId]);
     }
 
     public function isLogin($email, $pass)

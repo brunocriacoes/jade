@@ -2,6 +2,8 @@
 
 namespace App\UseCases;
 
+use App\Model\Store;
+
 class DeleteStoreCase
 {
     private $params;
@@ -18,8 +20,9 @@ class DeleteStoreCase
 
     public function execute()
     {
-        $storeModel = new \App\Models\Store();
-        return $storeModel->delete($this->params['publicId']);
+        $storeModel = new Store();
+        $storeModel->delete($this->params['publicId']);
+        return [];
     }
 }
 
