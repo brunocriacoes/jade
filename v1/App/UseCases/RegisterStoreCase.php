@@ -2,6 +2,8 @@
 
 namespace App\UseCases;
 
+use App\Model\Store;
+
 class RegisterStoreCase
 {
     private $params;
@@ -23,7 +25,7 @@ class RegisterStoreCase
 
     public function execute()
     {
-        $storeModel = new \App\Models\Store();
+        $storeModel = new Store();
         return $storeModel->create($this->params);
     }
 }
