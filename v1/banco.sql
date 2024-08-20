@@ -16,8 +16,11 @@ CREATE TABLE store (
     email VARCHAR(255) NOT NULL,
     status VARCHAR(50),
     walletId VARCHAR(255),
-    apiKeyAsaas VARCHAR(255),
-    apiKeyBling VARCHAR(255)
+    asaasApiKey VARCHAR(255),
+    blingApiKey VARCHAR(255),
+    blingAutorization VARCHAR(255),
+    blingToken VARCHAR(255),
+    blingRefreshToken VARCHAR(255)
 );
 
 CREATE TABLE webhook (
