@@ -14,6 +14,7 @@ class userList extends dataTable {
   async data() {
     const request = await this.getUsers();
     this.injectDataDom(request.payload);
+    this.addEventListeners();
   }
 
   injectDataDom(data) {
@@ -22,8 +23,21 @@ class userList extends dataTable {
     blade(data, templateElement, containerElement);
   }
 
-  addEventListeners() {}
-
+  addEventListeners() {
+    const elements = document.querySelectorAll(this.deleteElement);
+    const deleteUs = this.deleteUser.bind(this);
+    const data = this.data.bind(this);
+    elements.forEach((element) => {
+      element.addEventListener("click", async function (event) {
+        event.preventDefault();
+        const id = this.getAttribute("data-id");
+        const response = await deleteUs(id);
+        if (response.next) {
+          data();
+        }
+      });
+    });
+  }
   async getUsers() {
     const request = this.instanceRequest();
     const reponse = await request.get({
@@ -45,5 +59,5 @@ class userList extends dataTable {
 }
 
 export function render() {
-  new userList("table-user", "search", "edit-user", "delete-user");
+  new userList("table-user", "search", "edit-user", ".delete-user");
 }

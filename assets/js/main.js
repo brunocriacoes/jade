@@ -18,4 +18,5 @@ window.onload = (_) => {
   app.add("listar_loja", render_listar_loja);
   app.add("cadastro_webhook", render_cadastro_webhook);
   app.add("listar_webhook", render_listar_webhook);
+  app.add("home", render_listar_loja);
 };

@@ -22,11 +22,7 @@ class webhookList extends dataTable {
         origin: store.origin ? store.origin : "-",
         paymentKey: store.paymentKey ? store.paymentKey : "-",
         status: store.status ? "Ativo" : "Inativo",
-        payload: store.payload
-          ? JSON.stringify({
-              id: 12,
-            }).replace(" ", "")
-          : "{}",
+        payload: btoa(store.payload),
       };
     });
     this.injectDataDom(dataFormatedValues);
