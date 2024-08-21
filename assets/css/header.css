@@ -1,7 +1,3 @@
-:root {
-    --color-bg-header: #333;
-}
-
 header {
     display: flex;
     justify-content: space-between;

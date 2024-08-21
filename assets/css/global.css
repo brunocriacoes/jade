@@ -1,5 +1,7 @@
 :root {
     --color-bg: #151515;
+    --color-box-bg: #1c1c1c;
+    --color-bg-header: #333;
     --color-dialog-bg: #232323;
     --color-text: #D2D5DD;
     --color-success-text: rgb(0, 255, 60);
@@ -46,11 +48,8 @@ body {
 }
 
 .alert {
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
-    text-align: left;
     font-size: 0.9rem;
     opacity: 0.9;
     height: fit-content;
@@ -58,6 +57,7 @@ body {
 
 .alert__sucesso {
     text-align: center;
+    padding: 0.75rem 1rem;
     color: var(--color-success-text);
     background-color: var(--color-success-bg);
     border-color: var(--color-success-border);
@@ -65,6 +65,7 @@ body {
 
 .alert__error {
     text-align: center;
+    padding: 0.75rem 1rem;
     color: var(--color-error-text);
     background-color: var(--color-error-bg);
     border-color: var(--color-error-border);
@@ -90,4 +91,8 @@ body {
 
 .submit-btn:hover {
     background-color: var(--color-primary-hover);
+}
+
+.container {
+    margin-top: 50px !important;
 }

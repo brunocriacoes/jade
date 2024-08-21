@@ -1,63 +1,35 @@
-import { blade, debounce, searchDataTable } from "../helper/helper.js";
+import { blade } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
+import { requestHttp } from "../utils/request.js";
 
-class userList extends dataTable {
+class webhookList extends dataTable {
   constructor(formElementId, searchElementId) {
     super(formElementId, searchElementId);
   }
 
-  data() {
-    const data = [
-      {
-        id: 1,
-        data: "2021-06-01",
-        status: "PENDING",
-        origem: "ASAAS",
-        valor: "R$ 100,00",
-        key: "00000000100000100010010",
-      },
-      {
-        id: 2,
-        data: "2021-06-01",
-        status: "PENDING",
-        origem: "ASAAS",
-        valor: "R$ 100,00",
-        key: "00000000100000100010010",
-      },
-      {
-        id: 3,
-        data: "2021-06-01",
-        status: "PENDING",
-        origem: "ASAAS",
-        valor: "R$ 100,00",
-        key: "00000000100000100010010",
-      },
-      {
-        id: 4,
-        data: "2021-06-01",
-        status: "PENDING",
-        origem: "ASAAS",
-        valor: "R$ 100,00",
-        key: "00000000100000100010010",
-      },
-      {
-        id: 5,
-        data: "2021-06-01",
-        status: "PENDING",
-        origem: "ASAAS",
-        valor: "R$ 100,00",
-        key: "00000000100000100010010",
-      },
-      {
-        id: 6,
-        data: "2021-06-01",
-        status: "PENDING",
-        origem: "ASAAS",
-        valor: "R$ 140,00",
-        key: "00000000100000100010010",
-      },
-    ];
-    this.injectDataDom(data);
+  instanceRequest() {
+    return new requestHttp();
+  }
+
+  async data() {
+    const request = await this.getWebhooks();
+    const dataFormatedValues = request.payload.map((store) => {
+      const dateFormated = new Date(store.date).toLocaleString("pt-br");
+      return {
+        ...store,
+        date: dateFormated.replace(",", "").replace(" ", " - "),
+        value: store.value ? store.value : "-",
+        origin: store.origin ? store.origin : "-",
+        paymentKey: store.paymentKey ? store.paymentKey : "-",
+        status: store.status ? "Ativo" : "Inativo",
+        payload: store.payload
+          ? JSON.stringify({
+              id: 12,
+            }).replace(" ", "")
+          : "{}",
+      };
+    });
+    this.injectDataDom(dataFormatedValues);
   }
 
   injectDataDom(data) {
@@ -67,8 +39,27 @@ class userList extends dataTable {
   }
 
   addEventListeners() {}
+
+  async getWebhooks() {
+    const request = this.instanceRequest();
+    const reponse = await request.get({
+      name: "webhookList",
+    });
+    return reponse;
+  }
+
+  async deleteWebhook(id) {
+    const request = this.instanceRequest();
+    const reponse = await request.post({
+      name: "webhookDelete",
+      data: {
+        publicId: id,
+      },
+    });
+    return reponse;
+  }
 }
 
 export function render() {
-  new userList("table-webhook", "search");
+  new webhookList("table-webhook", "search");
 }

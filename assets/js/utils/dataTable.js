@@ -4,6 +4,7 @@ export class dataTable {
     this.searchElement = document.getElementById(searchElementId);
     this.editElement = document.getElementById(editElementId);
     this.deleteElement = document.getElementById(deleteElementId);
+
     this.data();
     this.addEventListeners();
   }

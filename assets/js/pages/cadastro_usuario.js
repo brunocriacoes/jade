@@ -1,24 +1,42 @@
 import { form } from "../utils/form.js";
-import { feedback, loadBtn, to } from "../helper/helper.js";
+import {
+  debounce,
+  feedback,
+  loadBtn,
+  to,
+  validateFieldsEmpty,
+} from "../helper/helper.js";
+import { requestHttp } from "../utils/request.js";
 
 class userCreate extends form {
   constructor(formElementId) {
     super(formElementId);
   }
 
+  instanceRequest() {
+    return new requestHttp();
+  }
+
   async onSubmit(event) {
     event.preventDefault();
     const formData = new FormData(this.form);
-    const data = Object.fromEntries(formData.entries());
-    if (!this.validate(data)) return;
     const loadButton = loadBtn(this.form.querySelector(".submit-btn"));
-    setInterval(() => {
+    const dataFields = Object.fromEntries(formData.entries());
+    if (!this.validate(dataFields)) {
       loadButton();
-    }, 1000);
-    setInterval(() => {
+      return;
+    }
+    const request = await this.createUser(dataFields);
+    if (!request.next) {
+      feedback(this.form, request.message, false);
+      loadButton();
+      return;
+    }
+    feedback(this.form, request.message);
+    debounce(() => {
+      loadButton();
       to("listar_usuario");
-    }, 3000);
-    feedback(this.form, "Usuário criado com sucesso");
+    }, 2000);
   }
 
   addEventListeners() {
@@ -28,15 +46,24 @@ class userCreate extends form {
   validate(data) {
     if (!validateFieldsEmpty(data, this.form)) return false;
 
-    if (data.password !== data.confirm_password) {
+    if (data.pass !== data.confirm_pass) {
       feedback(this.form, "As senhas não são iguais", false);
       return false;
     }
-    if (data.password.length < 6) {
-      feedback(this.form, "A senha deve ter no mínimo 6 caracteres", false);
+    if (data.pass.length < 8) {
+      feedback(this.form, "A senha deve ter no mínimo 8 caracteres", false);
       return false;
     }
     return true;
+  }
+
+  async createUser(data) {
+    const request = this.instanceRequest();
+    const reponse = await request.post({
+      name: "userCreate",
+      data: data,
+    });
+    return reponse;
   }
 }
 

@@ -13,7 +13,8 @@
     <div class="container">
         <div class="nova-senha-box">
             <div class="nova-senha-box-logo">
-                <img src="./assets/image/logo/logo.png" alt="logo" width="90" height="90" class="logo">
+                <a href="./login.html"><img src="./assets/image/logo/logo.png" alt="logo" width="90" height="90"
+                        class="logo"></a>
             </div>
             <h2>Redefinição de Senha</h2>
             <p>Digite sua nova senha e confirme para completar o processo de recuperação de senha.</p>
@@ -31,9 +32,12 @@
                             onchange="validarSenha()">
                     </div>
                 </div>
-                <button type="submit" class="submit-btn">Redefinir Senha</button>
-                <div class="alert alert-success">Senha redefinida com sucesso!</div>
-                <div class="alert alert-error erro">Erro ao redefinir senha!</div>
+                <button type="submit" class="submit-btn">
+                    <span>
+                        Confirmar Senha
+                    </span> <i></i>
+                </button>
+                <span class="alert"></span>
             </form>
         </div>
     </div>

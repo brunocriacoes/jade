@@ -1,69 +1,19 @@
-import { blade, debounce, searchDataTable } from "../helper/helper.js";
+import { blade } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
+import { requestHttp } from "../utils/request.js";
 
 class userList extends dataTable {
-  constructor(formElementId, searchElementId) {
-    super(formElementId, searchElementId);
+  constructor(formElementId, searchElementId, editElementId, deleteElementId) {
+    super(formElementId, searchElementId, editElementId, deleteElementId);
   }
 
-  data() {
-    const data = [
-      {
-        id: 1,
-        image: "https://www.gravatar.com/avatar/1",
-        name: "John Doe",
-        email: "johndoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
-      },
-      {
-        id: 2,
-        image: "https://www.gravatar.com/avatar/2",
-        name: "Victor",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
-      },
-      {
-        id: 3,
-        image: "https://www.gravatar.com/avatar/3",
-        name: "Jane Doe2",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
-      },
-      {
-        id: 4,
-        image: "https://www.gravatar.com/avatar/4",
-        name: "Jane Doe3",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
-      },
-      {
-        id: 5,
-        image: "https://www.gravatar.com/avatar/4",
-        name: "Jane Doe3",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
-      },
-      {
-        id: 6,
-        image: "https://www.gravatar.com/avatar/4",
-        name: "Jane Doe3",
-        email: "janedoe@example.com",
-        phone: "(123) 456-7890",
-        status: "Active",
-        role: "User",
-      },
-    ];
-    this.injectDataDom(data);
+  instanceRequest() {
+    return new requestHttp();
+  }
+
+  async data() {
+    const request = await this.getUsers();
+    this.injectDataDom(request.payload);
   }
 
   injectDataDom(data) {
@@ -73,8 +23,27 @@ class userList extends dataTable {
   }
 
   addEventListeners() {}
+
+  async getUsers() {
+    const request = this.instanceRequest();
+    const reponse = await request.get({
+      name: "userList",
+    });
+    return reponse;
+  }
+
+  async deleteUser(id) {
+    const request = this.instanceRequest();
+    const reponse = await request.post({
+      name: "userDelete",
+      data: {
+        publicId: id,
+      },
+    });
+    return reponse;
+  }
 }
 
 export function render() {
-  new userList("table-user", "search");
+  new userList("table-user", "search", "edit-user", "delete-user");
 }

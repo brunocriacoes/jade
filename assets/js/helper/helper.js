@@ -49,7 +49,7 @@ export function feedback($elemento, mensagem, status = true) {
   $elemento.appendChild($alerta);
   setTimeout(function () {
     $alerta.parentNode.removeChild($alerta);
-  }, 3000);
+  }, 4000);
 }
 
 export function to(path) {
@@ -157,4 +157,8 @@ export function validateFieldsEmpty(data, formElement) {
     return false;
   }
   return true;
+}
+
+export function url_base_api() {
+  return "https://api.paramour.com.br/v1";
 }

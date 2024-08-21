@@ -1,30 +1,39 @@
 import { form } from "../utils/form.js";
 import { feedback, loadBtn, to } from "../helper/helper.js";
+import { requestHttp } from "../utils/request.js";
 
 class login extends form {
   constructor(formElementId) {
     super(formElementId);
   }
 
+  instanceRequest() {
+    return new requestHttp();
+  }
+
   async onSubmit(event) {
     event.preventDefault();
     const formData = new FormData(this.form);
-    const data = Object.fromEntries(formData.entries());
-    if (!this.validate(data)) {
+    const loadButton = loadBtn(this.form.querySelector(".submit-btn"));
+    const dataFields = Object.fromEntries(formData.entries());
+    if (!this.validate(dataFields)) {
+      loadButton();
       feedback(this.form, "Preencha todos os campos", false);
       return;
     }
-    const loadButton = loadBtn(this.form.querySelector(".submit-btn"));
-
-    setInterval(() => {
+    const request = await this.login(dataFields);
+    if (!request.next) {
+      feedback(this.form, request.message, false);
       loadButton();
-    }, 1000);
+      return;
+    }
 
-    console.log(data);
-    setInterval(() => {
+    feedback(this.form, request.message);
+
+    debounce(() => {
+      loadButton();
       to("home");
-    }, 3000);
-    feedback(this.form, "Usuário logado com sucesso");
+    }, 2000);
   }
 
   addEventListeners() {
@@ -36,6 +45,14 @@ class login extends form {
       return false;
     }
     return true;
+  }
+  async login({ email, password }) {
+    const request = this.instanceRequest();
+    const reponse = await request.post({
+      name: "login",
+      data: { email, pass: password },
+    });
+    return reponse;
   }
 }
 

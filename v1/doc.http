@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 #### [ ] Listar Lojas ####
-GET {{base}}/store/list
+GET {{base}}/store/list?page=1&itemsPerPage=100
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
@@ -22,11 +22,11 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "externalId": "",
-    "name": "",
-    "email": "",
-    "apiKeyAsaas": "",
-    "apiKeyBling": ""
+    "externalId": "dsiqmkaosmdaopieu4m423423",
+    "name": "Loja do Mineiro",
+    "email": "mineiro@gmail.com",
+    "apiKeyAsaas": "dsiqmkaosmdaopieu4m423423",
+    "apiKeyBling": "dsiqmkaosmdaopieu4m423423"
 }
 
 #### [ ] Atualizar Lojas ####
@@ -69,10 +69,10 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "name": "Max 2",
-    "email": "maxsouza150@hotmail.com",
-    "pass": "Password@1",
-    "phone": "432534"
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "pass": "Min&iro123",
+    "phone": "123123"
 }
 
 #### [X] Listar Usuarios ####
@@ -121,7 +121,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "3f977a81-be6e-4cd1-9e8b-cf42480b4ace"
+    "publicId": "3d191d52-62e2-4eff-b8ff-7659e9e393bd"
 }
 
 #### [X] Criar Webhook ####

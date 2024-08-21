@@ -179,7 +179,7 @@
 
 @media (max-width: 480px) {
     .container {
-        margin-top: 700px;
+        height: 100%;
     }
 
     .tab-table,

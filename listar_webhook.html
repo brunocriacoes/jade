@@ -15,7 +15,9 @@
 <body>
     <header>
         <div class="header-box-logo">
-            <img src="./assets/image/logo/logo.png" alt="logo" width="50" height="50" class="logo">
+            <a href="./home.html">
+                <img src="./assets/image/logo/logo.png" alt="logo" width="50" height="50" class="logo">
+            </a>
         </div>
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
         <label for="menu-toggle" class="menu-icon">
@@ -70,14 +72,14 @@
     <div>
         <template id="row-template">
             <tr>
-                <td>${data}</td>
-                <td>${valor}</td>
+                <td>${date}</td>
+                <td>${value}</td>
                 <td>${status}</td>
-                <td>${origem}</td>
-                <td>${key}</td>
+                <td>${origin}</td>
+                <td>${paymentKey}</td>
                 <td>
                     <button class="visualizar-btn" id="visualizar-btn"
-                        data-webhook='{"data": "${data}", "valor": "${valor}", "status": "${status}", "origem": "${origem}", "key": "${key}"}'>Visualizar</button>
+                        data-webhook='{"payload": "${payload}"}'>Visualizar</button>
                 </td>
 
         </template>
