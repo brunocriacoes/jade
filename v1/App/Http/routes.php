@@ -180,3 +180,13 @@ $router->get('/v1/webhook/list', FactorRouter::add([
     "validations" => [],
     "run" => "execute"
 ]));
+
+$router->get('/v1/recover/pass', FactorRouter::add([
+    "params" => [
+        ["email", "Email é obrigatória"],
+    ],
+    "message" => ["Erro ao recuperar senha", "link enviado com sucesso"],
+    "case" => \App\UseCases\RecoverPass::class,
+    "validations" => [],
+    "run" => "execute"
+]));

@@ -8,10 +8,10 @@ class Keygen
   private $secret;
   private $salt;
 
-  public function __construct(int $time)
+  public function __construct(int $time, $secret = 'cCwrxA8m388')
   {
     $this->time = $time;
-    $this->secret = $_ENV['SECRET'];
+    $this->secret = $secret;
   }
 
   function setSalt(string $salt)
