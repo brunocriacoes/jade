@@ -1,5 +1,5 @@
 ### Variaveis ###
-@base = https://api.paramour.com.br/
+@base = https://api.paramour.com.br/v1
 @storePublicId = bling-fdgwsdfgsgdfsgfdwre
 
 #### [X] Login ####
@@ -7,61 +7,60 @@ POST {{base}}/login
 Content-Type: application/json
 
 {
-    "email": "maxsouza150@gmail.com",
+    "email": "maxsouza150@hotmail.com",
     "pass": "Password@1"
 }
 
-#### [ ] Listar Lojas ####
+#### [X] Listar Lojas ####
 GET {{base}}/store/list?page=1&itemsPerPage=100
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
-#### [ ] Cadastrar Lojas ####
-POST {{base}}/store/register
+#### [X] Cadastrar Lojas ####
+POST {{base}}/store/register?debug=true
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "externalId": "dsiqmkaosmdaopieu4m423423",
+    "externalId": "loja-do-mineiro",
     "name": "Loja do Mineiro",
     "email": "mineiro@gmail.com",
-    "apiKeyAsaas": "dsiqmkaosmdaopieu4m423423",
-    "apiKeyBling": "dsiqmkaosmdaopieu4m423423"
+    "asaasApiKey": "dsiqmkaosmdaopieu4m423423",
+    "blingApiKey": "dsiqmkaosmdaopieu4m423423"
 }
 
-#### [ ] Atualizar Lojas ####
+#### [X] Atualizar Lojas ####
 POST {{base}}/store/update
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "",
-    "externalId": "",
-    "name": "",
-    "email": "",
-    "apiKeyAsaas": "",
-    "apiKeyBling": ""
+    "publicId": "fea268a9-12c0-45be-8280-604eb32d8ecb",
+    "externalId": "loja-do-mineiro2",
+    "name": "Loja do Mineiro2",
+    "email": "mineiro2@gmail.com",
+    "asaasApiKey": "dsiqmkaosmdaopieu4m42342344",
+    "blingApiKey": "dsiqmkaosmdaopieu4m42342355"
 }
 
-#### [ ] status Lojas ####
+#### [X] status Lojas ####
 POST {{base}}/store/status
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "",
-    "status": 1
+    "publicId": "fea268a9-12c0-45be-8280-604eb32d8ecb",
+    "status": "ACTIVE"
 }
 
-#### [ ] Deletar Lojas ####
+#### [X] Deletar Lojas ####
 POST {{base}}/store/delete
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": ""
+    "publicId": "fea268a9-12c0-45be-8280-604eb32d8ecb"
 }
-
 
 #### [X] Criar Usuarios ####
 POST {{base}}/user/create
@@ -69,9 +68,9 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "name": "admin",
-    "email": "admin@gmail.com",
-    "pass": "Min&iro123",
+    "name": "admin_user",
+    "email": "admin_user@gmail.com",
+    "pass": "Password@1",
     "phone": "123123"
 }
 
@@ -86,9 +85,9 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "3f977a81-be6e-4cd1-9e8b-cf42480b4ace",
-    "name": "Max 1",
-    "phone": "82 99621-1554",
+    "publicId": "836e9bd8-8714-4533-b1be-1a478c1a90b3",
+    "name": "admin_user_2",
+    "phone": "82 99621-0022",
     "status": "ACTIVE"
 }
 
@@ -98,7 +97,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "3f977a81-be6e-4cd1-9e8b-cf42480b4ace",
+    "publicId": "836e9bd8-8714-4533-b1be-1a478c1a90b3",
     "pass": "Password@12"
 }
 
@@ -108,23 +107,22 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "3f977a81-be6e-4cd1-9e8b-cf42480b4ace",
+    "publicId": "836e9bd8-8714-4533-b1be-1a478c1a90b3",
     "name": "Max Edit",
-    "email": "maxsouza150-edit@gmail.com",
     "phone": "82 99621-1554",
     "status": "ACTIVE"
 }
 
-#### [ ] Deletar Usuarios ####
+#### [X] Deletar Usuarios ####
 POST {{base}}/user/delete
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "3d191d52-62e2-4eff-b8ff-7659e9e393bd"
+    "publicId": "836e9bd8-8714-4533-b1be-1a478c1a90b3"
 }
 
-#### [X] Criar Webhook ####
+#### [ ] Criar Webhook ####
 POST {{base}}/webhook/create/{{storePublicId}}
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh

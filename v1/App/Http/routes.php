@@ -34,8 +34,8 @@ $router->post('/v1/store/register', FactorRouter::add([
         ["externalId", "External ID é obrigatório"],
         ["name", "Nome é obrigatório"],
         ["email", "E-mail é obrigatório"],
-        ["apiKeyAsaas", "API Key Asaas é obrigatória"],
-        ["apiKeyBling", "API Key Bling é obrigatória"]
+        ["asaasApiKey", "API Key Asaas é obrigatória"],
+        ["blingApiKey", "API Key Bling é obrigatória"]
     ],
     "message" => ["Erro ao cadastrar loja", "Loja cadastrada com sucesso"],
     "case" => \App\UseCases\RegisterStoreCase::class,
@@ -52,8 +52,8 @@ $router->post('/v1/store/update', FactorRouter::add([
         ["externalId", "External ID é obrigatório"],
         ["name", "Nome é obrigatório"],
         ["email", "E-mail é obrigatório"],
-        ["apiKeyAsaas", "API Key Asaas é obrigatória"],
-        ["apiKeyBling", "API Key Bling é obrigatória"]
+        ["asaasApiKey", "API Key Asaas é obrigatória"],
+        ["blingApiKey", "API Key Bling é obrigatória"]
     ],
     "message" => ["Erro ao atualizar loja", "Loja atualizada com sucesso"],
     "case" => \App\UseCases\UpdateStoreCase::class,
@@ -112,7 +112,7 @@ $router->post('/v1/user/create', FactorRouter::add([
     "validations" => [
         ["validateEmail", "E-mail inválido"],
         ["validatePassword", "Sua senha deve ter pelo menos 8 caracteres, incluir uma letra maiúscula, uma letra minúscula, um número, e um caractere especial."],
-        ["userExist", "Este e-mail já está sendo ultilizado"]
+        ["userExist", "Este e-mail já está sendo utilizado"]
     ],
     "run" => "execute"
 ]));
@@ -121,7 +121,6 @@ $router->post('/v1/user/update', FactorRouter::add([
     "params" => [
         ["publicId", "Public ID é obrigatório"],
         ["name", "Nome de usuário é obrigatório"],
-        ["email", "E-mail é obrigatório"],
         ["phone", "Telefone é obrigatório"],
         ["status", "Status é obrigatório"]
     ],
