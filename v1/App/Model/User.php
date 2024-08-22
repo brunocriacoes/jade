@@ -51,6 +51,11 @@ class User extends Model
         return count($this->select($this->table, 'email = :email', [':email' => $email])) > 0;
     }
 
+    public function getByEmail($email)
+    {
+        return $this->select($this->table, 'email = :email', [':email' => $email])[0] ?? [];
+    }
+
     public function set($publicId, $data)
     {   
         unset($data['publicId']);
