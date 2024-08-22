@@ -49,11 +49,8 @@
         <table class="tab-table" id="table-loja">
             <thead>
                 <tr>
-                    <th>External ID</th>
                     <th>Nome da Loja</th>
                     <th>Email</th>
-                    <th>API Key Asaas</th>
-                    <th>API Key Bling</th>
                     <th>Status</th>
                     <th>Ações</th>
                 </tr>
@@ -66,18 +63,14 @@
     <div>
         <template id="row-template">
             <tr>
-                <td>${externalId}</td>
                 <td>${name}</td>
                 <td>${email}</td>
-                <td>${apiKeyAsaas}</td>
-                <td>${apiKeyBling}</td>
-                <!-- <td>
+                <td>
                     <label class="switch">
                         <input type="checkbox" ${status}>
                         <span class="slider round"></span>
                     </label>
-                </td> -->
-
+                </td>
                 <td>
                     <div class="acao">
                         <button class="edit-tab"><img src="./assets/image/icon/editar.png" alt="Editar" width="18"

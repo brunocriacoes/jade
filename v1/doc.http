@@ -1,5 +1,5 @@
 ### Variaveis ###
-@base = https://api.paramour.com.br/v1
+@base = https://api.paramour.com.br/
 @storePublicId = bling-fdgwsdfgsgdfsgfdwre
 
 #### [X] Login ####

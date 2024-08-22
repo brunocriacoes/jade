@@ -162,3 +162,7 @@ export function validateFieldsEmpty(data, formElement) {
 export function url_base_api() {
   return "https://api.paramour.com.br/v1";
 }
+
+export function isActiveStatus(value) {
+  return value === "ACTIVE";
+}

@@ -1,4 +1,4 @@
-import { blade } from "../helper/helper.js";
+import { blade, isActiveStatus } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
 import { requestHttp } from "../utils/request.js";
 
@@ -13,7 +13,14 @@ class userList extends dataTable {
 
   async data() {
     const request = await this.getUsers();
-    this.injectDataDom(request.payload);
+    this.injectDataDom(
+      request.payload.map((item) => {
+        return {
+          ...item,
+          status: isActiveStatus(item.status) ? "Ativo" : "Inativo",
+        };
+      })
+    );
     this.addEventListeners();
   }
 

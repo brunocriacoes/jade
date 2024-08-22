@@ -1,4 +1,4 @@
-import { blade } from "../helper/helper.js";
+import { blade, isActiveStatus } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
 import { requestHttp } from "../utils/request.js";
 
@@ -13,16 +13,13 @@ class webhookList extends dataTable {
 
   async data() {
     const request = await this.getWebhooks();
-    const dataFormatedValues = request.payload.map((store) => {
-      const dateFormated = new Date(store.date).toLocaleString("pt-br");
+    const dataFormatedValues = request.payload.map((item) => {
+      const dateFormated = new Date(item.date).toLocaleString("pt-br");
       return {
-        ...store,
+        ...item,
         date: dateFormated.replace(",", "").replace(" ", " - "),
-        value: store.value ? store.value : "-",
-        origin: store.origin ? store.origin : "-",
-        paymentKey: store.paymentKey ? store.paymentKey : "-",
-        status: store.status ? "Ativo" : "Inativo",
-        payload: btoa(store.payload),
+        status: isActiveStatus(item.status) ? "Ativo" : "Inativo",
+        payload: btoa(item.payload),
       };
     });
     this.injectDataDom(dataFormatedValues);

@@ -1,4 +1,4 @@
-import { blade } from "../helper/helper.js";
+import { blade, isActiveStatus } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
 import { requestHttp } from "../utils/request.js";
 class lojaList extends dataTable {
@@ -12,7 +12,14 @@ class lojaList extends dataTable {
 
   async data() {
     const request = await this.getStores();
-    this.injectDataDom(request.payload);
+    this.injectDataDom(
+      request.payload.map((item) => {
+        return {
+          ...item,
+          status: isActiveStatus(item.status) ? "checked" : "",
+        };
+      })
+    );
   }
 
   injectDataDom(data) {

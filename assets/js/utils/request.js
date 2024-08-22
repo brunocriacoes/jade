@@ -77,26 +77,42 @@ export class requestHttp {
 
   async get({ name }) {
     const route = this.getRoute(name);
-    const request = await fetch(url_base_api() + route.url, {
-      method: route.method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const response = await request.json();
-    return response;
+    try {
+      const request = await fetch(url_base_api() + route.url, {
+        method: route.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const response = await request.json();
+      return response;
+    } catch (error) {
+      return {
+        next: false,
+        message: "Erro ao processar a requisição",
+        payload: [],
+      };
+    }
   }
 
   async post({ name, data }) {
     const route = this.getRoute(name);
-    const request = await fetch(url_base_api() + route.url, {
-      method: route.method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    const response = await request.json();
-    return response;
+    try {
+      const request = await fetch(url_base_api() + route.url, {
+        method: route.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const response = await request.json();
+      return response;
+    } catch (error) {
+      return {
+        next: false,
+        message: "Erro ao processar a requisição",
+        payload: [],
+      };
+    }
   }
 }

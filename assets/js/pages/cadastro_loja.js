@@ -1,29 +1,42 @@
 import { form } from "../utils/form.js";
 import {
+  debounce,
   feedback,
   loadBtn,
   to,
   validateFieldsEmpty,
 } from "../helper/helper.js";
+import { requestHttp } from "../utils/request.js";
 
-class userCreate extends form {
+class storeCreate extends form {
   constructor(formElementId) {
     super(formElementId);
+  }
+
+  instanceRequest() {
+    return new requestHttp();
   }
 
   async onSubmit(event) {
     event.preventDefault();
     const formData = new FormData(this.form);
-    const data = Object.fromEntries(formData.entries());
-    if (!this.validate(data)) return;
     const loadButton = loadBtn(this.form.querySelector(".submit-btn"));
-    setInterval(() => {
+    const dataFields = Object.fromEntries(formData.entries());
+    if (!this.validate(dataFields)) {
       loadButton();
-    }, 1000);
-    setInterval(() => {
+      return;
+    }
+
+    const request = await this.createStore(dataFields);
+    if (!request.next) {
+      feedback(this.form, request.message, false);
+      loadButton();
+      return;
+    }
+    debounce(() => {
+      loadButton();
       to("listar_loja");
-    }, 3000);
-    feedback(this.form, "Loja criada com sucesso");
+    }, 2000);
   }
 
   addEventListeners() {
@@ -33,8 +46,17 @@ class userCreate extends form {
   validate(data) {
     return validateFieldsEmpty(data, this.form);
   }
+
+  async createStore(data) {
+    const request = this.instanceRequest();
+    const reponse = await request.post({
+      name: "storeRegister",
+      data: data,
+    });
+    return reponse;
+  }
 }
 
 export function render() {
-  new userCreate("create-store-form");
+  new storeCreate("create-store-form");
 }
