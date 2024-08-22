@@ -16,3 +16,9 @@ No terminal, navegue até o diretório onde está localizado o arquivo SQL e exe
 ~~~sql
 sqlite3 dev.sqlite < banco.sql
 ~~~
+
+## Iniciar o servidor local pra testar
+
+~~~
+php -S localhost:8001
+~~~

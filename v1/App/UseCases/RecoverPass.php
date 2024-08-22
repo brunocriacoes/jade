@@ -18,13 +18,16 @@ class RecoverPass {
     function execute() {
         $user = new User();
         $isExist = $user->emailExist($this->email);
+        $isSend = false;
         if($isExist) {
             $gen = new Keygen( 15 );
             $gen->setSalt($this->email);
             $code = $gen->generate();
-            SendMail::go( $this->email, Email::subject(), Email::body($code, $this->email) );
+            $isSend = SendMail::go( $this->email, Email::subject(), Email::body($code, $this->email) );
         }
-        return [];
+        return [
+            "isSend" => $isSend,
+        ];
     }
 
 }

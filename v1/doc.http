@@ -138,3 +138,23 @@ GET {{base}}/webhook/list?page=1&itemsPerPage=100
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
+
+#### [ ] Recuparar senha ####
+POST {{base}}/recover/pass
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "email": "br.rafael@outlook.com"
+}
+
+#### [ ] Alter Pass ####
+POST {{base}}/alter/pass
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "email": "br.rafael@outlook.com",
+    "code" : "AS56DA41SDA64D44AD",
+    "pass" : "123456",
+}
