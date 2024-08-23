@@ -68,6 +68,16 @@ export class requestHttp {
         method: "GET",
         url: "/webhook/list?page=1&itemsPerPage=100",
       },
+      {
+        name: "recoverPass",
+        method: "POST",
+        url: "/recover/pass",
+      },
+      {
+        name: "alterPass",
+        method: "POST",
+        url: "/alter/pass",
+      },
     ];
   }
 

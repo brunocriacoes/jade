@@ -8,7 +8,7 @@ import {
 } from "../helper/helper.js";
 import { requestHttp } from "../utils/request.js";
 
-class storeCreate extends form {
+class recoverPass extends form {
   constructor(formElementId) {
     super(formElementId);
   }
@@ -26,8 +26,7 @@ class storeCreate extends form {
       loadButton();
       return;
     }
-
-    const request = await this.createStore(dataFields);
+    const request = await this.createUser(dataFields);
     if (!request.next) {
       feedback(this.form, request.message, false);
       loadButton();
@@ -36,7 +35,7 @@ class storeCreate extends form {
     feedback(this.form, request.message);
     debounce(() => {
       loadButton();
-      to("listar_loja");
+      to("login");
     }, 2000);
   }
 
@@ -45,22 +44,14 @@ class storeCreate extends form {
   }
 
   validate(data) {
-    return validateFieldsEmpty(data, this.form);
+    if (!validateFieldsEmpty(data, this.form)) return false;
+    return true;
   }
 
-  async createStore(data) {
+  async createUser(data) {
     const request = this.instanceRequest();
     const reponse = await request.post({
-      name: "storeRegister",
-      data: data,
-    });
-    return reponse;
-  }
-
-  async updateStore(data) {
-    const request = this.instanceRequest();
-    const reponse = await request.put({
-      name: "storeUpdate",
+      name: "recoverPass",
       data: data,
     });
     return reponse;
@@ -68,5 +59,5 @@ class storeCreate extends form {
 }
 
 export function render() {
-  new storeCreate("create-store-form");
+  new recoverPass("recuperar-senha-form");
 }
