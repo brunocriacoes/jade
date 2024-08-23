@@ -5,34 +5,43 @@ namespace App\Library;
 class BlingAPI
 {
 
-    private $apiKey;
     private $baseUrl;
 
-    public function __construct($apiKey)
+    public function __construct()
     {
-        $this->apiKey = $apiKey;
-        $this->baseUrl = 'https://bling.com.br/Api/v2/';
+        $this->baseUrl = 'https://bling.com.br/Api';
     }
 
-    private function request($endpoint, $method = 'GET', $data = null)
+    private function request($path, $method = 'GET', $data = null, $authBasic = null)
     {
-        $url = $this->baseUrl . $endpoint . '/json/?apikey=' . $this->apiKey;
+        $url = $this->baseUrl . $path;
+
+        if ($method === 'GET' && !empty($data)) {
+            $queryString = http_build_query($data);
+            $url .= '?' . $queryString;
+        }
 
         $ch = curl_init($url);
+
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 
+        $headers = [];
+
+        if ($authBasic) {
+            $headers[] = 'Authorization: Basic ' . base64_encode($authBasic);
+        }
+
         if ($method === 'POST') {
             curl_setopt($ch, CURLOPT_POST, true);
-            if ($data) {
-                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-                curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-            }
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            $headers[] = 'Content-Type: application/x-www-form-urlencoded';
         }
 
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
 
         if ($httpCode >= 200 && $httpCode < 300) {
@@ -112,5 +121,38 @@ class BlingAPI
             'em_espera',
             'finalizado',
         ];
+    }
+
+    function generateBasic($client_id, $client_secret)
+    {
+        return base64_encode("{$client_id}:{$client_secret}");
+    }
+
+    function generateToken($client_id, $client_secret, $code)
+    {
+
+        return $this->request(
+            "/v3/oauth/token",
+            "GET",
+            [
+                "grant_type" => "authorization_code",
+                "code" => $code
+            ],
+            $this->generateBasic($client_id, $client_secret)
+        );
+    }
+
+    function refreshToken($client_id, $client_secret, $refreshToken)
+    {
+
+        return $this->request(
+            "/v3/oauth/token",
+            "GET",
+            [
+                "grant_type" => "refresh_token",
+                "refresh_token" => $refreshToken
+            ],
+            $this->generateBasic($client_id, $client_secret)
+        );
     }
 }
