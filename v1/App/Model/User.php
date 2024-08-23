@@ -45,6 +45,10 @@ class User extends Model
     {
         return $this->select($this->table, 'id = :id', [':id' => $id]);
     }
+    public function getByPublicId($publicId)
+    {
+        return $this->select($this->table, 'publicId = :publicId', [':publicId' => $publicId]);
+    }
 
     public function emailExist($email)
     {

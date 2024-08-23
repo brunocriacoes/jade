@@ -25,6 +25,15 @@ class Store extends Model
     {
         return $this->select($this->table, 'id = :id', [':id' => $id]);
     }
+    public function getByPublicId($publicId)
+    {
+        return $this->select($this->table, 'publicId = :publicId', [':publicId' => $publicId]);
+    }
+
+    public function getByExternalId($externalId)
+    {
+        return $this->select($this->table, 'externalId = :externalId', [':externalId' => $externalId]);
+    }
 
     public function set($publicID, $data)
     {

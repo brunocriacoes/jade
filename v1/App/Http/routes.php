@@ -29,6 +29,18 @@ $router->get('/v1/store/list', FactorRouter::add([
     "run" => "execute"
 ]));
 
+$router->get('/v1/store/info', FactorRouter::add([
+    "params" => [
+        ["publicId", "Identificado obrigatório"]
+    ],
+    "message" => ["Erro ao listar lojas", "Lojas listada com sucesso"],
+    "case" => \App\UseCases\ListStoresInfo::class,
+    "validations" => [
+        ["isExist", "Loja não encontrada"]
+    ],
+    "run" => "execute"
+]));
+
 $router->post('/v1/store/register', FactorRouter::add([
     "params" => [
         ["externalId", "External ID é obrigatório"],
@@ -97,6 +109,18 @@ $router->get('/v1/user/list', FactorRouter::add([
     "message" => ["Erro ao listar usuários", "Usuários listados com sucesso"],
     "case" => \App\UseCases\ListUsersCase::class,
     "validations" => [],
+    "run" => "execute"
+]));
+
+$router->get('/v1/user/info', FactorRouter::add([
+    "params" => [
+        ["publicId", "Identificador é obrigatória"]
+    ],
+    "message" => ["Erro ao listar usuários", "Usuários listados com sucesso"],
+    "case" => \App\UseCases\ListUsersInfo::class,
+    "validations" => [
+       [ "isExist", "Usuário não encontrado"]
+    ],
     "run" => "execute"
 ]));
 
@@ -205,3 +229,15 @@ $router->post('/v1/alter/pass', FactorRouter::add([
     ],
     "run" => "execute"
 ]));
+
+$router->post('/v1/generate/token', FactorRouter::add([
+    "params" => [
+        ["externalId", "informe o identificador da loja"],
+    ],
+    "message" => ["Erro ao gerar token", "Token gerado com sucesso"],
+    "case" => \App\UseCases\GenerateToken::class,
+    "validations" => [
+        ["isExist", "Identificador não encontrado"],
+    ],
+    "run" => "execute"
+    ]));

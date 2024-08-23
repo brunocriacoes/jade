@@ -16,6 +16,11 @@ GET {{base}}/store/list?page=1&itemsPerPage=100
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
+#### [X] Listar Lojas ####
+GET {{base}}/store/info?publicId=0dae8a64-4983-4b44-8a86-443cf5fff9c9
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
 #### [X] Cadastrar Lojas ####
 POST {{base}}/store/register?debug=true
 Content-Type: application/json
@@ -76,6 +81,11 @@ token: asdlkgnsdfgksnfdghpksdfgnh
 
 #### [X] Listar Usuarios ####
 GET {{base}}/user/list?page=1&itemsPerPage=100
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+#### [X] Listar informações do usuario ####
+GET {{base}}/user/info?publicId=3f977a81-be6e-4cd1-9e8b-cf42480b4ace
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
@@ -154,5 +164,14 @@ token: asdlkgnsdfgksnfdghpksdfgnh
 {
     "email": "br.rafael@outlook.com",
     "code" : "AS56DA41SDA64D44AD",
-    "pass" : "123456",
+    "pass" : "123456"
+}
+
+#### [ ] Bling ####
+POST {{base}}/generate/token
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "externalId" : "loja-do-mineiro"
 }

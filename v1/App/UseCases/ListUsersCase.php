@@ -17,7 +17,6 @@ class ListUsersCase
 
     public function execute()
     {
-
         return array_map("App\Model\User::porter", $this->user->list($this->params['page'], $this->params['itemsPerPage']));
     }
 }
