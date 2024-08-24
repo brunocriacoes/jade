@@ -1,10 +1,10 @@
 import { form } from "../utils/form.js";
 import { feedback, loadBtn, to } from "../helper/helper.js";
-import { requestHttp } from "../utils/request.js";
+import { requestHttp } from "../service/request.js";
 
 class login extends form {
-  constructor(formElementId) {
-    super(formElementId);
+  constructor(formElement) {
+    super(formElement);
   }
 
   instanceRequest() {

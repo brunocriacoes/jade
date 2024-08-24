@@ -1,6 +1,6 @@
 export class form {
-  constructor(formElementId) {
-    this.form = document.getElementById(formElementId);
+  constructor(formElement) {
+    this.form = document.getElementById(formElement);
     this.addEventListeners();
   }
 

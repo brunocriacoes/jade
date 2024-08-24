@@ -1,7 +1,7 @@
 export class dataTable {
-  constructor(tableElementId, searchElementId, editElement, deleteElement) {
-    this.table = document.getElementById(tableElementId);
-    this.searchElement = document.getElementById(searchElementId);
+  constructor(tableElement, searchElement, editElement, deleteElement) {
+    this.table = document.getElementById(tableElement);
+    this.searchElement = document.getElementById(searchElement);
     this.editElement = editElement;
     this.deleteElement = deleteElement;
     this.data();

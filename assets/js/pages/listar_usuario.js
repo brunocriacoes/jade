@@ -1,10 +1,10 @@
 import { blade, isActiveStatus } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
-import { requestHttp } from "../utils/request.js";
+import { requestHttp } from "../service/request.js";
 
 class userList extends dataTable {
-  constructor(formElementId, searchElementId, editElementId, deleteElementId) {
-    super(formElementId, searchElementId, editElementId, deleteElementId);
+  constructor(formElement, searchElement, editElement, deleteElement) {
+    super(formElement, searchElement, editElement, deleteElement);
   }
 
   instanceRequest() {

@@ -6,11 +6,11 @@ import {
   to,
   validateFieldsEmpty,
 } from "../helper/helper.js";
-import { requestHttp } from "../utils/request.js";
+import { requestHttp } from "../service/request.js";
 
 class userCreate extends form {
-  constructor(formElementId) {
-    super(formElementId);
+  constructor(formElement) {
+    super(formElement);
   }
 
   instanceRequest() {

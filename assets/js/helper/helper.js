@@ -119,10 +119,12 @@ export function clearForm(form) {
 }
 
 export function setFormData(form, data) {
-  for (var key in data) {
-    var $input = form.querySelector(`[name=${key}]`);
-    $input.value = data[key];
-  }
+  const elements = form.elements;
+  Object.keys(data).forEach((key) => {
+    if (elements[key]) {
+      elements[key].value = data[key];
+    }
+  });
 }
 
 export function searchDataTable(data, searchValue) {
@@ -165,4 +167,17 @@ export function url_base_api() {
 
 export function isActiveStatus(value) {
   return value === "ACTIVE";
+}
+
+export function verifyTypeFormPage() {
+  const id = getParam("id");
+  if (id) {
+    return {
+      id: id,
+      type: "edit",
+    };
+  }
+  return {
+    type: "create",
+  };
 }

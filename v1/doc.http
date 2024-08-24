@@ -17,7 +17,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 #### [X] Listar Lojas ####
-GET {{base}}/store/info?publicId=0dae8a64-4983-4b44-8a86-443cf5fff9c9
+GET {{base}}/store/info?publicId=38738de3-9717-4a55-b393-b9a85be25e80
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
@@ -40,12 +40,12 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "fea268a9-12c0-45be-8280-604eb32d8ecb",
-    "externalId": "loja-do-mineiro2",
-    "name": "Loja do Mineiro2",
-    "email": "mineiro2@gmail.com",
-    "asaasApiKey": "dsiqmkaosmdaopieu4m42342344",
-    "blingApiKey": "dsiqmkaosmdaopieu4m42342355"
+    "asaasApiKey": "eqd2q3e423ds",
+    "blingApiKey": "12312312edqdq",
+    "email": "alagoano1@gmail.com",
+    "externalId": "loja-do-alagoano1",
+    "name": "Loja do Alagoano1",
+    "publicId": "38738de3-9717-4a55-b393-b9a85be25e80"
 }
 
 #### [X] status Lojas ####

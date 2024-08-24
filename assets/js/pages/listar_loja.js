@@ -1,15 +1,15 @@
 import { blade, isActiveStatus } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
-import { requestHttp } from "../utils/request.js";
+import { requestHttp } from "../service/request.js";
 class lojaList extends dataTable {
   constructor(
-    formElementId,
-    searchElementId,
-    editElementId,
-    deleteElementId,
+    formElement,
+    searchElement,
+    editElement,
+    deleteElement,
     editStatusElement
   ) {
-    super(formElementId, searchElementId, editElementId, deleteElementId);
+    super(formElement, searchElement, editElement, deleteElement);
     this.editStatusElement = editStatusElement;
   }
 
@@ -18,7 +18,7 @@ class lojaList extends dataTable {
   }
 
   async data() {
-    const request = await this.getStores();
+    const request = await this.get();
     this.injectDataDom(
       request.payload.map((item) => {
         return {
@@ -38,12 +38,13 @@ class lojaList extends dataTable {
 
   addEventListeners() {
     this.eventDelete();
-    this.eventUpdate();
+    this.eventUpdateStatus();
+    this.eventRedirectToUpdate();
   }
 
   eventDelete() {
     const elements = document.querySelectorAll(this.deleteElement);
-    const deleteUs = this.deleteStore.bind(this);
+    const deleteUs = this.delete.bind(this);
     const data = this.data.bind(this);
     elements.forEach((element) => {
       element.addEventListener("click", async function (event) {
@@ -57,9 +58,9 @@ class lojaList extends dataTable {
     });
   }
 
-  eventUpdate() {
+  eventUpdateStatus() {
     const elements = document.querySelectorAll(this.editStatusElement);
-    const updateStatus = this.updateStatusStore.bind(this);
+    const updateStatus = this.updateStatus.bind(this);
     const data = this.data.bind(this);
     elements.forEach((element) => {
       element.addEventListener("change", async function (event) {
@@ -79,15 +80,29 @@ class lojaList extends dataTable {
     });
   }
 
-  async getStores() {
+  eventRedirectToUpdate() {
+    const elements = document.querySelectorAll(this.editElement);
+    const updateStatus = this.updateStatus.bind(this);
+    const data = this.data.bind(this);
+    elements.forEach((element) => {
+      element.addEventListener("click", async function (event) {
+        event.preventDefault();
+        const id = this.getAttribute("data-id");
+        window.location.href = `cadastro_loja.html?id=${id}`;
+      });
+    });
+  }
+
+  async get() {
     const request = this.instanceRequest();
+    const typeRoute = "storeList";
     const reponse = await request.get({
-      name: "storeList",
+      name: typeRoute,
     });
     return reponse;
   }
 
-  async deleteStore(id) {
+  async delete(id) {
     const request = this.instanceRequest();
     const reponse = await request.post({
       name: "storeDelete",
@@ -98,7 +113,7 @@ class lojaList extends dataTable {
     return reponse;
   }
 
-  async updateStatusStore(data) {
+  async updateStatus(data) {
     const request = this.instanceRequest();
     const reponse = await request.post({
       name: "storeStatus",

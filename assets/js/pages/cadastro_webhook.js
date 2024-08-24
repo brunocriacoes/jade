@@ -2,8 +2,8 @@ import { form } from "../utils/form.js";
 import { feedback, loadBtn, to } from "../helper/helper.js";
 
 class userCreate extends form {
-  constructor(formElementId) {
-    super(formElementId);
+  constructor(formElement) {
+    super(formElement);
   }
 
   async onSubmit(event) {

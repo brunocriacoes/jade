@@ -49,11 +49,8 @@
         <table class="tab-table" id="table-loja">
             <thead>
                 <tr>
-                    <th>External ID</th>
                     <th>Nome da Loja</th>
                     <th>Email</th>
-                    <th>API Key Asaas</th>
-                    <th>API Key Bling</th>
                     <th>Status</th>
                     <th>Ações</th>
                 </tr>
@@ -66,24 +63,21 @@
     <div>
         <template id="row-template">
             <tr>
-                <td>${externalId}</td>
                 <td>${name}</td>
                 <td>${email}</td>
-                <td>${apiKeyAsaas}</td>
-                <td>${apiKeyBling}</td>
-                <!-- <td>
+                <td>
                     <label class="switch">
-                        <input type="checkbox" ${status}>
+                        <input type="checkbox" class="status-loja" data-id="${publicId}" ${status}>
                         <span class="slider round"></span>
                     </label>
-                </td> -->
-
+                </td>
                 <td>
                     <div class="acao">
                         <button class="edit-tab"><img src="./assets/image/icon/editar.png" alt="Editar" width="18"
                                 height="18"></button>
-                        <button class="delete-tab"><img src="./assets/image/icon/lixeira.png" alt="Apagar" width="18"
-                                height="18"></button>
+                        <button class="delete-tab delete-loja" data-id="${publicId}">
+                            <img src="./assets/image/icon/lixeira.png" alt="Apagar" width="18" height="18">
+                        </button>
                     </div>
                 </td>
             </tr>
