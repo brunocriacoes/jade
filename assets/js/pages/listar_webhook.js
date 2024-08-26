@@ -1,10 +1,10 @@
 import { blade, isActiveStatus } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
-import { requestHttp } from "../utils/request.js";
+import { requestHttp } from "../service/request.js";
 
 class webhookList extends dataTable {
-  constructor(formElementId, searchElementId) {
-    super(formElementId, searchElementId);
+  constructor(formElement, searchElement) {
+    super(formElement, searchElement);
   }
 
   instanceRequest() {

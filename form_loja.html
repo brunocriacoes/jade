@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/form.css">
     <link rel="stylesheet" href="./assets/css/header.css">
-    <title>Paramou - Cadastro Usuário</title>
+    <title>Paramou - Cadastro Loja</title>
 </head>
 
 <body>
     <header>
         <div class="header-box-logo">
+
             <a href="./home.html">
                 <img src="./assets/image/logo/logo.png" alt="logo" width="50" height="50" class="logo">
             </a>
+
         </div>
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
         <label for="menu-toggle" class="menu-icon">
@@ -41,40 +43,40 @@
     <div class="container">
         <div class="form-container">
             <div class="form-header">
-                <h2>Criar Usuário</h2>
+                <h2 class="title-form-page"></h2>
                 <hr>
             </div>
-            <form id="create-user-form">
+            <form id="form-store-form">
                 <div class="form-content">
                     <div class="form-group">
-                        <label for="name">Nome</label>
+                        <label for="name">Nome da Loja</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Email da Loja</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Telefone</label>
-                        <input type="text" id="phone" name="phone" required>
+                        <label for="apiKeyBling">API Key Bling</label>
+                        <input type="text" id="apiKeyBling" name="blingApiKey" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" id="password" name="pass" required>
+                        <label for="apiKeyAsaas">API Key Asaas</label>
+                        <input type="text" id="apiKeyAsaas" name="asaasApiKey" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirm_password">Confirmar Senha</label>
-                        <input type="password" id="confirm_password" name="confirm_pass" required>
+                        <label for="externalId">External ID Loja</label>
+                        <input type="text" id="externalId" name="externalId" required>
                     </div>
                 </div>
                 <div class="form-footer">
                     <div class="form-group">
                         <button type="submit" class="submit-btn">
-                            <span>Criar</span> <i></i>
+                            <span></span> <i></i>
                         </button>
                     </div>
+                    <span class="alert"></span>
                 </div>
-                <span class="alert"></span>
             </form>
         </div>
     </div>

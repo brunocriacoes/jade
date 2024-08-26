@@ -34,6 +34,11 @@ export class requestHttp {
         url: "/store/delete",
       },
       {
+        name: "storeInfo",
+        method: "GET",
+        url: "/store/info?publicId=",
+      },
+      {
         name: "userCreate",
         method: "POST",
         url: "/user/create",
@@ -42,6 +47,11 @@ export class requestHttp {
         name: "userList",
         method: "GET",
         url: "/user/list?page=1&itemsPerPage=100",
+      },
+      {
+        name: "userInfo",
+        method: "GET",
+        url: "/user/info?publicId=",
       },
       {
         name: "userUpdate",
@@ -90,10 +100,11 @@ export class requestHttp {
     return this.routes.find((route) => route.name === name);
   }
 
-  async get({ name }) {
+  async get({ name, params }) {
     const route = this.getRoute(name);
+    const param = params ? params : "";
     try {
-      const request = await fetch(url_base_api() + route.url, {
+      const request = await fetch(url_base_api() + route.url + param, {
         method: route.method,
         headers: {
           "Content-Type": "application/json",
@@ -123,6 +134,9 @@ export class requestHttp {
       const response = await request.json();
       return response;
     } catch (error) {
+      console.log("====================================");
+      console.error(error);
+      console.log("====================================");
       return {
         next: false,
         message: "Erro ao processar a requisição",
