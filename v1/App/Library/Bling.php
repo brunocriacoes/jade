@@ -52,15 +52,14 @@ class Bling
         }
     }
 
-    public function cadastrarWebhook($evento, $url)
+    public function cadastrarWebhook($modulo, $url, $evento,$auth)
     {
         $data = [
-            'webhook' => [
-                'evento' => $evento,
-                'url' => $url
-            ]
+                "modulo"=> $modulo,
+                "url"=> $url,
+                "acoes"=> $evento
         ];
-        return $this->request('webhook', 'POST', $data);
+        return $this->request('/v3/aplicativos/webhook', 'POST', $data, $auth);
     }
 
     public function listarWebhooks()

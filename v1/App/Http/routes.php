@@ -244,3 +244,16 @@ $router->post('/v1/generate/token', FactorRouter::add([
     ],
     "run" => "execute"
     ]));
+
+$router->post('/v1/subscribe/bling', FactorRouter::add([
+    "params" => [
+        ["externalId", "informe o identificador da loja"]
+
+    ],
+    "message" => ["Erro no escrever-se", "Inscrito com sucesso"],
+    "case" => \App\UseCases\SubscribeBling::class,
+    "validations" => [
+        ["isExist", "Identificador não encontrado"],
+    ],
+    "run" => "execute"
+    ]));

@@ -10,14 +10,14 @@ Content-Type: application/json
     "email": "maxsouza150@hotmail.com",
     "pass": "Password@1"
 }
-### teste ###
+
 #### [X] Listar Lojas ####
 GET {{base}}/store/list?page=1&itemsPerPage=100
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
-#### [X] Listar Lojas ####
-GET {{base}}/store/info?publicId=38738de3-9717-4a55-b393-b9a85be25e80
+#### [X] Listar Informações da Lojas ####
+GET {{base}}/store/info?publicId=9418cbfc-2dce-4db3-9bbf-86dc25f5ef99
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
@@ -41,12 +41,13 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "asaasApiKey": "eqd2q3e423ds",
-    "blingApiKey": "12312312edqdq",
-    "email": "alagoano1@gmail.com",
+    "publicId": "9418cbfc-2dce-4db3-9bbf-86dc25f5ef99",
     "externalId": "loja-do-alagoano1",
     "name": "Loja do Alagoano1",
-    "publicId": "38738de3-9717-4a55-b393-b9a85be25e80"
+    "email": "alagoano1@gmail.com",
+    "asaasApiKey": "0",
+    "blingClientId": "1",
+    "blingClientSecret": "2"
 }
 
 #### [X] status Lojas ####
@@ -55,8 +56,8 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "fea268a9-12c0-45be-8280-604eb32d8ecb",
-    "status": "ACTIVE"
+    "publicId": "9418cbfc-2dce-4db3-9bbf-86dc25f5ef99",
+    "status": "INACTIVE"
 }
 
 #### [X] Deletar Lojas ####
@@ -65,7 +66,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "fea268a9-12c0-45be-8280-604eb32d8ecb"
+    "publicId": "9418cbfc-2dce-4db3-9bbf-86dc25f5ef99"
 }
 
 #### [X] Criar Usuarios ####
@@ -74,8 +75,8 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "name": "admin_user",
-    "email": "admin_user@gmail.com",
+    "name": "Max",
+    "email": "maximizebot@gmail.com",
     "pass": "Password@1",
     "phone": "123123"
 }
@@ -86,7 +87,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 #### [X] Listar informações do usuario ####
-GET {{base}}/user/info?publicId=3f977a81-be6e-4cd1-9e8b-cf42480b4ace
+GET {{base}}/user/info?publicId=e58af946-0426-4629-831f-027b59a443d9
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
@@ -96,8 +97,8 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "836e9bd8-8714-4533-b1be-1a478c1a90b3",
-    "name": "admin_user_2",
+    "publicId": "e58af946-0426-4629-831f-027b59a443d9",
+    "name": "admin_user_full2",
     "phone": "82 99621-0022",
     "status": "ACTIVE"
 }
@@ -108,7 +109,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "836e9bd8-8714-4533-b1be-1a478c1a90b3",
+    "publicId": "e58af946-0426-4629-831f-027b59a443d9",
     "pass": "Password@12"
 }
 
@@ -118,8 +119,8 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "836e9bd8-8714-4533-b1be-1a478c1a90b3",
-    "name": "Max Edit",
+    "publicId": "e58af946-0426-4629-831f-027b59a443d9",
+    "name": "admin_user_edit",
     "phone": "82 99621-1554",
     "status": "ACTIVE"
 }
@@ -130,7 +131,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "836e9bd8-8714-4533-b1be-1a478c1a90b3"
+    "publicId": "e58af946-0426-4629-831f-027b59a443d9"
 }
 
 #### [ ] Criar Webhook ####
@@ -154,7 +155,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "email": "victorfernandomagalhaes@gmail.com"
+    "email": "maximizebot@gmail.com"
 }
 
 #### [ ] Alter Pass ####
@@ -177,3 +178,13 @@ token: asdlkgnsdfgksnfdghpksdfgnh
     "externalId" : "loja-do-alagoano1",
     "code" : "3d894267f2a7b3c248425eafe8c35fbcec9c537b"
 }
+
+#### [ ] Subscribe Bling ####
+POST {{base}}/subscribe/bling
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
+{
+    "externalId" : "loja-do-alagoano"
+}
+
