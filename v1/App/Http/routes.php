@@ -47,7 +47,8 @@ $router->post('/v1/store/register', FactorRouter::add([
         ["name", "Nome é obrigatório"],
         ["email", "E-mail é obrigatório"],
         ["asaasApiKey", "API Key Asaas é obrigatória"],
-        ["blingApiKey", "API Key Bling é obrigatória"]
+        ["blingClientId", "Client ID Bling é obrigatório"],
+        ["blingClientSecret", "Client Secret Bling é obrigatório"]
     ],
     "message" => ["Erro ao cadastrar loja", "Loja cadastrada com sucesso"],
     "case" => \App\UseCases\RegisterStoreCase::class,
@@ -64,8 +65,8 @@ $router->post('/v1/store/update', FactorRouter::add([
         ["externalId", "External ID é obrigatório"],
         ["name", "Nome é obrigatório"],
         ["email", "E-mail é obrigatório"],
-        ["asaasApiKey", "API Key Asaas é obrigatória"],
-        ["blingApiKey", "API Key Bling é obrigatória"]
+        ["blingClientId", "Client ID Bling é obrigatório"],
+        ["blingClientSecret", "Client Secret Bling é obrigatório"]
     ],
     "message" => ["Erro ao atualizar loja", "Loja atualizada com sucesso"],
     "case" => \App\UseCases\UpdateStoreCase::class,
@@ -233,6 +234,8 @@ $router->post('/v1/alter/pass', FactorRouter::add([
 $router->post('/v1/generate/token', FactorRouter::add([
     "params" => [
         ["externalId", "informe o identificador da loja"],
+        ["code", "informe um código"],
+
     ],
     "message" => ["Erro ao gerar token", "Token gerado com sucesso"],
     "case" => \App\UseCases\GenerateToken::class,

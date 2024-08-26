@@ -2,7 +2,7 @@
 
 namespace App\Library;
 
-class BlingAPI
+class Bling
 {
 
     private $baseUrl;
@@ -30,14 +30,15 @@ class BlingAPI
         $headers = [];
 
         if ($authBasic) {
-            $headers[] = 'Authorization: Basic ' . base64_encode($authBasic);
+            $headers[] = 'Authorization: Basic ' . $authBasic;
         }
-
         if ($method === 'POST') {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
             $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+
         }
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -47,7 +48,7 @@ class BlingAPI
         if ($httpCode >= 200 && $httpCode < 300) {
             return json_decode($response, true);
         } else {
-            throw new \Exception("Error: HTTP Code $httpCode - $response");
+            return json_decode($response, true);
         }
     }
 
@@ -130,10 +131,9 @@ class BlingAPI
 
     function generateToken($client_id, $client_secret, $code)
     {
-
         return $this->request(
             "/v3/oauth/token",
-            "GET",
+            "POST",
             [
                 "grant_type" => "authorization_code",
                 "code" => $code
@@ -147,7 +147,7 @@ class BlingAPI
 
         return $this->request(
             "/v3/oauth/token",
-            "GET",
+            "POST",
             [
                 "grant_type" => "refresh_token",
                 "refresh_token" => $refreshToken

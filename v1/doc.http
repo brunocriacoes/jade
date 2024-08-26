@@ -27,11 +27,12 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "externalId": "loja-do-mineiro",
-    "name": "Loja do Mineiro",
-    "email": "mineiro@gmail.com",
-    "asaasApiKey": "dsiqmkaosmdaopieu4m423423",
-    "blingApiKey": "dsiqmkaosmdaopieu4m423423"
+    "externalId": "loja-do-alagoano",
+    "name": "Loja do Alagoano",
+    "email": "alagoano@gmail.com",
+    "asaasApiKey": "0",
+    "blingClientId": "1",
+    "blingClientSecret": "2"
 }
 
 #### [X] Atualizar Lojas ####
@@ -40,12 +41,13 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "publicId": "fea268a9-12c0-45be-8280-604eb32d8ecb",
-    "externalId": "loja-do-mineiro2",
-    "name": "Loja do Mineiro2",
-    "email": "mineiro2@gmail.com",
-    "asaasApiKey": "dsiqmkaosmdaopieu4m42342344",
-    "blingApiKey": "dsiqmkaosmdaopieu4m42342355"
+    "publicId": "38738de3-9717-4a55-b393-b9a85be25e80",
+    "externalId": "loja-do-alagoano1",
+    "name": "Loja do Alagoano1",
+    "email": "alagoano1@gmail.com",
+    "asaasApiKey": "0",
+    "blingClientId": "1",
+    "blingClientSecret": "2"
 }
 
 #### [X] status Lojas ####
@@ -173,5 +175,6 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "externalId" : "loja-do-mineiro"
+    "externalId" : "loja-do-alagoano1",
+    "code" : "3d894267f2a7b3c248425eafe8c35fbcec9c537b"
 }

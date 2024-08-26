@@ -78,6 +78,11 @@ export class requestHttp {
         method: "POST",
         url: "/alter/pass",
       },
+      {
+        name: "generateToken",
+        method: "POST",
+        url: "/generate/token",
+      },
     ];
   }
 

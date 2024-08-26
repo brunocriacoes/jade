@@ -17,8 +17,8 @@ CREATE TABLE store (
     status VARCHAR(50),
     walletId VARCHAR(255),
     asaasApiKey VARCHAR(255),
-    blingApiKey VARCHAR(255),
-    blingAutorization VARCHAR(255),
+    blingClientId VARCHAR(255),
+    blingClientSecret VARCHAR(255),
     blingToken VARCHAR(255),
     blingRefreshToken VARCHAR(255)
 );
