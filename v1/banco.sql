@@ -31,7 +31,7 @@ CREATE TABLE webhook (
     status VARCHAR(50),
     origin VARCHAR(255),
     paymentKey VARCHAR(255),
-    payload JSON
+    payload LONGTEXT
 );
 
 CREATE TABLE payment (
