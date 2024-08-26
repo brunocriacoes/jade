@@ -1,0 +1,83 @@
+{
+    "retorno": {
+        "pedidos": [
+            {
+                "pedido": {
+                    "desconto": "0,00",
+                    "observacoes": "",
+                    "observacaointerna": "",
+                    "data": "2024-08-26",
+                    "numero": "206",
+                    "numeroOrdemCompra": "",
+                    "vendedor": "",
+                    "valorfrete": "0.00",
+                    "outrasdespesas": "0.00",
+                    "totalprodutos": "86.02",
+                    "totalvenda": "86.02",
+                    "situacao": "Atendido",
+                    "dataSaida": "2024-08-26",
+                    "loja": "205099935",
+                    "cliente": {
+                        "id": "16923756638",
+                        "nome": "Teste Asaas",
+                        "cnpj": "85260731093",
+                        "ie": "",
+                        "indIEDest": "9",
+                        "rg": "",
+                        "endereco": "Rua Graciliano Ramos",
+                        "numero": "536",
+                        "complemento": "",
+                        "cidade": "Arapiraca",
+                        "bairro": "Baix\u00e3o",
+                        "cep": "57305365",
+                        "uf": "AL",
+                        "email": "maxsouza150@hotmail.com",
+                        "celular": "(82) 99621-1554",
+                        "fone": ""
+                    },
+                    "transporte": {
+                        "tipo_frete": "R",
+                        "qtde_volumes": "0",
+                        "peso_bruto": "0.000"
+                    },
+                    "itens": [
+                        {
+                            "item": {
+                                "codigo": "112847-1000",
+                                "descricao": "ANEL INFANTIL COELHO CRAVEJADO COM ORELHA COLORIDA TAMANHO:10",
+                                "quantidade": "1.0000",
+                                "valorunidade": "86.0200000000",
+                                "precocusto": "11.5800000000",
+                                "descontoItem": "0.00",
+                                "un": "P\u00c7",
+                                "pesoBruto": "0.02000",
+                                "largura": "10",
+                                "altura": "10",
+                                "profundidade": "4",
+                                "descricaoDetalhada": "",
+                                "unidadeMedida": "cm",
+                                "gtin": ""
+                            }
+                        }
+                    ],
+                    "parcelas": [
+                        {
+                            "parcela": {
+                                "idLancamento": "20991559613",
+                                "valor": "86.02",
+                                "dataVencimento": "2024-08-27",
+                                "obs": "",
+                                "destino": "1",
+                                "forma_pagamento": {
+                                    "id": "2779137",
+                                    "descricao": "BOLETO BRADESCO",
+                                    "codigoFiscal": "15"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

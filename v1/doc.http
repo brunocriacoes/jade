@@ -135,12 +135,12 @@ token: asdlkgnsdfgksnfdghpksdfgnh
 }
 
 #### [ ] Criar Webhook ####
-POST {{base}}/webhook/create/{{storePublicId}}
+POST {{base}}/webhook/create/Teste-Asaas
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "id": 42
+    "titulo": "Teste Asaas",
 }
 
 #### [X] Listar Webhook ####
