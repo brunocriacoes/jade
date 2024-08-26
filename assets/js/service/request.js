@@ -49,6 +49,11 @@ export class requestHttp {
         url: "/user/list?page=1&itemsPerPage=100",
       },
       {
+        name: "userInfo",
+        method: "GET",
+        url: "/user/info?publicId=",
+      },
+      {
         name: "userUpdate",
         method: "POST",
         url: "/user/update",
@@ -124,6 +129,9 @@ export class requestHttp {
       const response = await request.json();
       return response;
     } catch (error) {
+      console.log("====================================");
+      console.error(error);
+      console.log("====================================");
       return {
         next: false,
         message: "Erro ao processar a requisição",

@@ -1,70 +1,88 @@
-import { blade, isActiveStatus } from "../helper/helper.js";
+import { blade, formatPhone, isActiveStatus } from "../helper/helper.js";
 import { dataTable } from "../utils/dataTable.js";
 import { requestHttp } from "../service/request.js";
 
-class userList extends dataTable {
+class UserList extends dataTable {
   constructor(formElement, searchElement, editElement, deleteElement) {
     super(formElement, searchElement, editElement, deleteElement);
+    this.apiRoutes = {
+      list: "userList",
+      delete: "userDelete",
+    };
   }
 
   instanceRequest() {
     return new requestHttp();
   }
 
-  async data() {
-    const request = await this.getUsers();
-    this.injectDataDom(
-      request.payload.map((item) => {
-        return {
-          ...item,
-          status: isActiveStatus(item.status) ? "Ativo" : "Inativo",
-        };
-      })
+  async fetchData() {
+    const response = await this.getUsers();
+    this.renderData(
+      response.payload.map((item) => ({
+        ...item,
+        status: isActiveStatus(item.status) ? "Ativo" : "Inativo",
+        phone: formatPhone(item.phone),
+      }))
     );
     this.addEventListeners();
   }
 
-  injectDataDom(data) {
+  renderData(data) {
     const containerElement = this.table.querySelector("tbody");
     const templateElement = document.getElementById("row-template");
     blade(data, templateElement, containerElement);
   }
 
   addEventListeners() {
-    const elements = document.querySelectorAll(this.deleteElement);
-    const deleteUs = this.deleteUser.bind(this);
-    const data = this.data.bind(this);
+    this.handleDeleteEvent();
+    this.handleRedirectToUpdateEvent();
+  }
+
+  handleDeleteEvent() {
+    this.addEventToElements(this.deleteElement, async (element) => {
+      const id = element.getAttribute("data-id");
+      const response = await this.deleteUser(id);
+      if (response.next) this.fetchData();
+    });
+  }
+
+  handleRedirectToUpdateEvent() {
+    this.addEventToElements(this.editElement, (element) => {
+      const id = element.getAttribute("data-id");
+      window.location.href = `form_usuario.html?id=${id}`;
+    });
+  }
+
+  addEventToElements(selector, callback, eventType = "click") {
+    const elements = document.querySelectorAll(selector);
     elements.forEach((element) => {
-      element.addEventListener("click", async function (event) {
+      element.addEventListener(eventType, async (event) => {
         event.preventDefault();
-        const id = this.getAttribute("data-id");
-        const response = await deleteUs(id);
-        if (response.next) {
-          data();
-        }
+        await callback(element);
       });
     });
   }
+
   async getUsers() {
     const request = this.instanceRequest();
-    const reponse = await request.get({
-      name: "userList",
-    });
-    return reponse;
+    return await request.get({ name: this.apiRoutes.list });
   }
 
   async deleteUser(id) {
     const request = this.instanceRequest();
-    const reponse = await request.post({
-      name: "userDelete",
-      data: {
-        publicId: id,
-      },
+    return await request.post({
+      name: this.apiRoutes.delete,
+      data: { publicId: id },
     });
-    return reponse;
   }
 }
 
 export function render() {
-  new userList("table-user", "search", "edit-user", ".delete-user");
+  const userList = new UserList(
+    "table-user",
+    "search",
+    ".edit-user",
+    ".delete-user"
+  );
+  userList.fetchData();
 }

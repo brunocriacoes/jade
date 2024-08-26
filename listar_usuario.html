@@ -43,7 +43,7 @@
         <div class="tab-list-header">
             <h2>Lista de Usuários</h2>
             <div class="tab-actions">
-                <a id="add-tab" href="./cadastro_usuario.html" class="add-tab">Adicionar Usuário</a>
+                <a id="add-tab" href="./form_usuario.html" class="add-tab">Adicionar Usuário</a>
             </div>
         </div>
         <table class="tab-table" id="table-user">
@@ -74,7 +74,7 @@
                 <td>${status}</td>
                 <td>
                     <div class="acao">
-                        <button class="edit-tab" id="edit-user" id-edit="${publicId}">
+                        <button class="edit-tab edit-user" data-id="${publicId}">
                             <img src="./assets/image/icon/editar.png" alt="Gravatar" width="18" height="18">
                         </button>
                         <button class="delete-tab delete-user" id="delete-user" data-id="${publicId}">

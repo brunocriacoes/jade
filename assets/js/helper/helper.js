@@ -181,3 +181,12 @@ export function verifyTypeFormPage() {
     type: "create",
   };
 }
+
+export function formatPhone(value) {
+  if (!value) return "";
+  const phone = value.replace(/\D/g, "");
+  if (phone.length > 11) {
+    return phone.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+  }
+  return phone.replace(/^(\d{2})(\d{4})(\d{4}).*/, "($1) $2-$3");
+}
