@@ -17,7 +17,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 #### [X] Listar Informações da Lojas ####
-GET {{base}}/store/info?publicId=9418cbfc-2dce-4db3-9bbf-86dc25f5ef99
+GET {{base}}/store/info?publicId=2acf7e97-ff59-4455-a9b5-8ae90c7f57af
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 

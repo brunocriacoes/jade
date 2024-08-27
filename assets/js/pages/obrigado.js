@@ -1,20 +1,16 @@
-import {getParam} from "../helper/helper.js";
-import { requestHttp } from "../utils/request.js";
+import { getParam } from "../helper/helper.js";
+import { requestHttp } from "../service/request.js";
 
-export async function render(){
-    let externalId = getParam('externalId')
-    let code = getParam('code')
-    console.log(externalId);
-    console.log(code);
+export async function render() {
+  let externalId = getParam("externalId");
+  let code = getParam("code");
+  let request = new requestHttp();
 
-    let request = new requestHttp();
-
-    const response = await request.post({
-        name: "generateToken",
-        data: {
-            externalId,
-            code
-        }
-      });
-    console.log(response);
+  const response = await request.post({
+    name: "generateToken",
+    data: {
+      externalId,
+      code,
+    },
+  });
 }
