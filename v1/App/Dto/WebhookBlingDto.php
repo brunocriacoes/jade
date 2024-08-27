@@ -1,0 +1,51 @@
+<?php
+namespace App\Dto;
+
+class WebhookBlingDto{
+    public $customerId;
+    public $name;
+    public $cpfCnpj;
+    public $address;
+    public $addressNumber;
+    public $city;
+    public $neighborhood;
+    public $zipCode;
+    public $state;
+    public $email;
+    public $mobilePhone;
+    public $numberOrder;
+    public $totalSale;
+    public $status;
+    public $paymentPlans;
+    public $amount;
+    public $dueDate;
+    public $typePayment;
+
+    
+    public function __construct($data) {
+        $data = (json_decode($data));
+        $client = $data->retorno->pedidos[0]->pedido->cliente;
+        $order = $data->retorno->pedidos[0]->pedido;
+        $plot = $data->retorno->pedidos[0]->pedido->parcelas;
+        var_dump($client->numero);
+
+        $this->customerId = null;
+        $this->name = $client->nome ?? null;
+        $this->cpfCnpj = $client->cnpj ?? null;
+        $this->address = $client->endereco ?? null;
+        $this->addressNumber = $client->numero ?? null;
+        $this->city = $client->cidade ?? null;
+        $this->neighborhood = $client->bairro ?? null;
+        $this->zipCode = $client->cep ?? null;
+        $this->state = $client->uf ?? null;
+        $this->email = $client->email ?? null;
+        $this->mobilePhone = $client->celular ?? null;
+        $this->totalSale = $order->totalvenda ?? null;
+        $this->numberOrder = $order->numero ?? null;
+        $this->status = $order->situacao ?? null;
+        $this->paymentPlans = count($plot) ?? 1;
+        $this->amount = $plot[0]->parcela->valor ?? null;
+        $this->dueDate = $plot[0]->parcela->dataVencimento ?? null;
+        $this->typePayment = $plot[0]->parcela->forma_pagamento->descricao ?? null;
+    }
+}
