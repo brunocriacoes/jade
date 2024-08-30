@@ -16,6 +16,9 @@ class ListWebhooksCase
     public function execute()
     {
         $webhookModel = new Webhook();
-        return $webhookModel->list($this->params['page'], $this->params['itemsPerPage']);
+        return array_map(function($e){
+            $e['payload'] = str_replace('data=', '', $e['payload']);
+            return $e;
+        },$webhookModel->list($this->params['page'], 12));
     }
 }
