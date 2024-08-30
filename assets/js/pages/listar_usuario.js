@@ -41,6 +41,10 @@ class UserList extends dataTable {
   handleDeleteEvent() {
     this.addEventToElements(this.deleteElement, async (element) => {
       const id = element.getAttribute("data-id");
+      const confirmDeletion = window.confirm("Tem certeza que deseja deletar este item?");
+      if(!confirmDeletion){
+        return null;
+      }
       const response = await this.deleteUser(id);
       if (response.next) this.fetchData();
     });
