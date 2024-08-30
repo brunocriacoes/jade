@@ -53,6 +53,10 @@ class Store extends Model
             "name" => $payload["name"],
             "email" => $payload["email"],
             "status" => $payload["status"],
+            "blingClientId" => $payload["blingClientId"],
+            "blingClientSecret" => $payload["blingClientSecret"],
+            "asaasApiKey" => $payload["asaasApiKey"],
+
         ];
     }
 }

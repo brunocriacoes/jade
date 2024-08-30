@@ -20,16 +20,18 @@ class WebhookBlingDto{
     public $amount;
     public $dueDate;
     public $typePayment;
+    public $id;
 
     
     public function __construct($data) {
+        $data = str_replace("data=","",$data);
         $data = (json_decode($data));
         $client = $data->retorno->pedidos[0]->pedido->cliente;
         $order = $data->retorno->pedidos[0]->pedido;
         $plot = $data->retorno->pedidos[0]->pedido->parcelas;
-        var_dump($client->numero);
 
         $this->customerId = null;
+        $this->id = $plot[0]->parcela->idLancamento;
         $this->name = $client->nome ?? null;
         $this->cpfCnpj = $client->cnpj ?? null;
         $this->address = $client->endereco ?? null;

@@ -12,7 +12,7 @@ class Bling
         $this->baseUrl = 'https://bling.com.br/Api';
     }
 
-    private function request($path, $method = 'GET', $data = null, $authBasic = null)
+    private function request($path, $method = 'GET', $data = null, $authBasic = null, $bearer = null)
     {
         $url = $this->baseUrl . $path;
 
@@ -32,12 +32,23 @@ class Bling
         if ($authBasic) {
             $headers[] = 'Authorization: Basic ' . $authBasic;
         }
+        if ($bearer) {
+            $headers[] = 'Authorization: Bearer ' . $bearer;
+        }
         if ($method === 'POST') {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
             $headers[] = 'Content-Type: application/x-www-form-urlencoded';
 
         }
+
+        if ($method === 'PUT') {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+            $headers[] = 'Content-Type: application/json'; 
+        }
+        
+        
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $response = curl_exec($ch);
@@ -151,7 +162,62 @@ class Bling
                 "grant_type" => "refresh_token",
                 "refresh_token" => $refreshToken
             ],
+
             $this->generateBasic($client_id, $client_secret)
+        );
+    }
+
+    function listPedidos($token){
+        $path = '/v3/pedidos/vendas';
+        return $this->request(
+            $path,
+            "GET",
+            [],
+            null,
+            $token
+        );
+    }
+
+
+
+    function getOrderById($id, $blingToken){
+        $path = '/v3/pedidos/vendas/'. $id;
+        return $this->request(
+            $path,
+            "GET",
+            [],
+            null,
+            $blingToken
+        );
+    }
+
+    function getOrderByOrder($orderNumber, $blingToken){
+        $path = '/v3/pedidos/vendas';
+        return $this->request(
+            $path,
+            "GET",
+            ["numero" => $orderNumber],
+            null,
+            $blingToken
+        );
+    }
+
+    function updateOrderById(
+        $id, 
+        $paymentId,
+        $linkPdf,
+        $resOrder,
+        $blingToken
+    ){
+        $path = '/v3/pedidos/vendas/'. $id;
+        $payload = $resOrder['data'];
+        $payload['observacoes'] = $linkPdf;
+        return $this->request(
+            $path,
+            "PUT",
+            $payload,
+            null,
+            $blingToken
         );
     }
 }

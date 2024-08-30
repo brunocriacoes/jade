@@ -17,7 +17,7 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 #### [X] Listar Informações da Lojas ####
-GET {{base}}/store/info?publicId=2acf7e97-ff59-4455-a9b5-8ae90c7f57af
+GET {{base}}/store/info?publicId=a33c7aee-3738-4ab2-9947-c3e7764dd40d
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
@@ -139,7 +139,7 @@ POST {{base}}/webhook/create/bling-loja-do-alagoano?debug=true
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
-{
+data={
     "retorno": {
         "pedidos": [
             {
@@ -147,20 +147,19 @@ token: asdlkgnsdfgksnfdghpksdfgnh
                     "desconto": "0,00",
                     "observacoes": "",
                     "observacaointerna": "",
-                    "data": "2024-08-26",
-                    "numero": "206",
+                    "data": "2024-08-29",
+                    "numero": "212",
                     "numeroOrdemCompra": "",
                     "vendedor": "",
                     "valorfrete": "0.00",
                     "outrasdespesas": "0.00",
-                    "totalprodutos": "86.02",
-                    "totalvenda": "86.02",
+                    "totalprodutos": "264.90",
+                    "totalvenda": "264.90",
                     "situacao": "Atendido",
-                    "dataSaida": "2024-08-26",
-                    "loja": "205099935",
+                    "dataSaida": "2024-08-29",
                     "cliente": {
                         "id": "16923756638",
-                        "nome": "Max Souza",
+                        "nome": "Teste Asaas",
                         "cnpj": "85260731093",
                         "ie": "",
                         "indIEDest": "9",
@@ -184,16 +183,16 @@ token: asdlkgnsdfgksnfdghpksdfgnh
                     "itens": [
                         {
                             "item": {
-                                "codigo": "112847-1000",
-                                "descricao": "ANEL INFANTIL COELHO CRAVEJADO COM ORELHA COLORIDA TAMANHO:10",
+                                "codigo": "AN35625-16",
+                                "descricao": "ANEL COM 4 AROS ENTRELA\u00c7ADOS  DOIS LISOS DOIS CRAVEJADOS TAMANHO:16",
                                 "quantidade": "1.0000",
-                                "valorunidade": "86.0200000000",
-                                "precocusto": "11.5800000000",
+                                "valorunidade": "264.9000000000",
+                                "precocusto": "35.2800000000",
                                 "descontoItem": "0.00",
                                 "un": "P\u00c7",
                                 "pesoBruto": "0.02000",
                                 "largura": "10",
-                                "altura": "10",
+                                "altura": "0",
                                 "profundidade": "4",
                                 "descricaoDetalhada": "",
                                 "unidadeMedida": "cm",
@@ -204,9 +203,9 @@ token: asdlkgnsdfgksnfdghpksdfgnh
                     "parcelas": [
                         {
                             "parcela": {
-                                "idLancamento": "20991559613",
-                                "valor": "86.02",
-                                "dataVencimento": "2024-08-27",
+                                "idLancamento": "21013846458",
+                                "valor": "264.90",
+                                "dataVencimento": "2024-09-03",
                                 "obs": "",
                                 "destino": "1",
                                 "forma_pagamento": {

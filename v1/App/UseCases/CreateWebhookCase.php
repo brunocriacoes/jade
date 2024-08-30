@@ -6,6 +6,7 @@ use App\Model\Webhook;
 use App\Library\Asaas;
 use App\Model\Store;
 use App\Dto\WebhookBlingDto;
+use App\Library\Bling;
 
 class CreateWebhookCase
 {
@@ -70,7 +71,13 @@ class CreateWebhookCase
         $urlApi = 'https://sandbox.asaas.com/api/v3';
         $storeExternalId = $this->removePrefix($this->params['storePublicId']);
         $tokenApi = $store->getByExternalId($storeExternalId)[0]['asaasApiKey'];
+        $blingToken = $store->getByExternalId($storeExternalId)[0]['blingToken'];
+        $blingRefreshToken = $store->getByExternalId($storeExternalId)[0]['blingRefreshToken'];
+        $publicId = $store->getByExternalId($storeExternalId)[0]['publicId'];
+        $blingClientSecret = $store->getByExternalId($storeExternalId)[0]['blingClientSecret'];
+        $blingClientId = $store->getByExternalId($storeExternalId)[0]['blingClientId'];
         $asaas = new Asaas($urlApi, $tokenApi);
+        $bling = new Bling();
         $dto = new WebhookBlingDto(file_get_contents('php://input'));
 
         if ($this->isAttended($dto)) {
@@ -93,9 +100,32 @@ class CreateWebhookCase
                         $dto->addressNumber,
                         ''
                 );
-                var_dump($resPayment);
-        };
-        return [];
+                $linkPdf = $resPayment['bankSlipUrl'];
+                $externalId = $resPayment['externalReference'];
+                $paymentId = $resPayment['id'];
+                $orderNumber = $bling->getOrderByOrder($dto->numberOrder, $blingToken);
+                if(isset($orderNumber["error"])){
+                    $resRefresh = $bling->refreshToken($blingClientId, $blingClientSecret, $blingRefreshToken);
+                    $token = $resRefresh["access_token"];
+                    $refreshToken = $resRefresh["refresh_token"];
+                    $store->set($publicId, [
+                        "blingToken"=> $token,
+                        "blingRefreshToken"=> $refreshToken
+                    ]);
+                    $blingToken = $token;
+                    $orderNumber = $bling->getOrderByOrder($dto->numberOrder, $blingToken);
+                }
+                
+                $resOrder = $bling->getOrderById($orderNumber['data'][0]['id'], $blingToken);
+                $resUpdate = $bling->updateOrderById(
+                    $orderNumber['data'][0]['id'],
+                    $paymentId,
+                    $linkPdf,
+                    $resOrder,
+                    $blingToken
+                );
+        }
+        
         return $webhookModel->create([
             'storePublicId' => $this->params['storePublicId'],
             'date' => date('Y-m-d H:i:s'),
