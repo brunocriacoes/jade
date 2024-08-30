@@ -69,6 +69,7 @@ class CreateWebhookCase
         $webhookModel = new Webhook();
         $store = new Store();
         $urlApi = 'https://sandbox.asaas.com/api/v3';
+        
         $storeExternalId = $this->removePrefix($this->params['storePublicId']);
         $tokenApi = $store->getByExternalId($storeExternalId)[0]['asaasApiKey'];
         $blingToken = $store->getByExternalId($storeExternalId)[0]['blingToken'];
@@ -76,54 +77,56 @@ class CreateWebhookCase
         $publicId = $store->getByExternalId($storeExternalId)[0]['publicId'];
         $blingClientSecret = $store->getByExternalId($storeExternalId)[0]['blingClientSecret'];
         $blingClientId = $store->getByExternalId($storeExternalId)[0]['blingClientId'];
+        $status = $store->getByExternalId($storeExternalId)[0]['status']=="ACTIVE";
         $asaas = new Asaas($urlApi, $tokenApi);
         $bling = new Bling();
         $dto = new WebhookBlingDto(file_get_contents('php://input'));
-
-        if ($this->isAttended($dto)) {
-            $dto = $this->isCustomer($dto, $asaas);
-            if($dto->typePayment == 'BOLETO BRADESCO'){
-                $resPayment = $asaas->postPayments(
-                        $dto->numberOrder,
-                        'BOLETO',
-                        $dto->customerId,
-                        $dto->amount,
-                        '',
-                        '',
-                        '',
-                        '',
-                        $dto->name,
-                        $dto->cpfCnpj,
-                        $dto->mobilePhone,
-                        $dto->email,
-                        $dto->zipCode,
-                        $dto->addressNumber,
-                        ''
-                );
-                $linkPdf = $resPayment['bankSlipUrl'];
-                $externalId = $resPayment['externalReference'];
-                $paymentId = $resPayment['id'];
-                $orderNumber = $bling->getOrderByOrder($dto->numberOrder, $blingToken);
-                if(isset($orderNumber["error"])){
-                    $resRefresh = $bling->refreshToken($blingClientId, $blingClientSecret, $blingRefreshToken);
-                    $token = $resRefresh["access_token"];
-                    $refreshToken = $resRefresh["refresh_token"];
-                    $store->set($publicId, [
-                        "blingToken"=> $token,
-                        "blingRefreshToken"=> $refreshToken
-                    ]);
-                    $blingToken = $token;
+        if($status){
+            if ($this->isAttended($dto)) {
+                $dto = $this->isCustomer($dto, $asaas);
+                if($dto->typePayment == 'BOLETO BRADESCO'){
+                    $resPayment = $asaas->postPayments(
+                            $dto->numberOrder,
+                            'BOLETO',
+                            $dto->customerId,
+                            $dto->amount,
+                            '',
+                            '',
+                            '',
+                            '',
+                            $dto->name,
+                            $dto->cpfCnpj,
+                            $dto->mobilePhone,
+                            $dto->email,
+                            $dto->zipCode,
+                            $dto->addressNumber,
+                            ''
+                    );
+                    $linkPdf = $resPayment['bankSlipUrl'];
+                    $externalId = $resPayment['externalReference'];
+                    $paymentId = $resPayment['id'];
                     $orderNumber = $bling->getOrderByOrder($dto->numberOrder, $blingToken);
-                }
-                
-                $resOrder = $bling->getOrderById($orderNumber['data'][0]['id'], $blingToken);
-                $resUpdate = $bling->updateOrderById(
-                    $orderNumber['data'][0]['id'],
-                    $paymentId,
-                    $linkPdf,
-                    $resOrder,
-                    $blingToken
-                );
+                    if(isset($orderNumber["error"])){
+                        $resRefresh = $bling->refreshToken($blingClientId, $blingClientSecret, $blingRefreshToken);
+                        $token = $resRefresh["access_token"];
+                        $refreshToken = $resRefresh["refresh_token"];
+                        $store->set($publicId, [
+                            "blingToken"=> $token,
+                            "blingRefreshToken"=> $refreshToken
+                        ]);
+                        $blingToken = $token;
+                        $orderNumber = $bling->getOrderByOrder($dto->numberOrder, $blingToken);
+                    }
+                    
+                    $resOrder = $bling->getOrderById($orderNumber['data'][0]['id'], $blingToken);
+                    $resUpdate = $bling->updateOrderById(
+                        $orderNumber['data'][0]['id'],
+                        $paymentId,
+                        $linkPdf,
+                        $resOrder,
+                        $blingToken
+                    );
+            }
         }
         
         return $webhookModel->create([

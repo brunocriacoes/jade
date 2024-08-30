@@ -38,6 +38,7 @@ class StoreForm extends form {
     if (this.typeForm?.type && this.typeForm.type === "edit") {
       this.addHiddenInput("publicId", this.typeForm.id);
       const response = await this.getFormData(this.typeForm.id);
+      response.payload.linkRedirect = "https://api.paramour.com.br/obrigado.html?externalId=bling-"+response.payload.externalId;
       setFormData(this.form, response.payload);
     }
   }
