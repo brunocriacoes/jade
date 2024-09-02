@@ -206,12 +206,13 @@ class Bling
         $id, 
         $paymentId,
         $linkPdf,
+        $linkInvoice,
         $resOrder,
         $blingToken
     ){
         $path = '/v3/pedidos/vendas/'. $id;
         $payload = $resOrder['data'];
-        $payload['observacoes'] = $linkPdf;
+        $payload['observacoes'] = $linkPdf . "\r\n" . $linkInvoice;
         return $this->request(
             $path,
             "PUT",

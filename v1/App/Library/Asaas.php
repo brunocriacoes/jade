@@ -501,6 +501,7 @@ class Asaas
 		string $cep,
 		string $numero,
 		string $complemento,
+		$installmentCount = 1,
 		array $split = []
 	) {
 		$payload = [
@@ -542,6 +543,10 @@ class Asaas
 		}
 		if (!empty($split)) {
 			$payload['split'] = $split;
+		}
+		if ($installmentCount > 1) {
+			$payload['installmentCount'] = $installmentCount;
+			$payload['installmentValue'] = ($valor / $installmentCount);
 		}
 		return $this->post('/payments', $payload);
 	}

@@ -100,9 +100,12 @@ class CreateWebhookCase
                             $dto->email,
                             $dto->zipCode,
                             $dto->addressNumber,
-                            ''
+                            '',
+                            $dto->paymentPlans
                     );
+                    var_dump($dto->paymentPlans);
                     $linkPdf = $resPayment['bankSlipUrl'];
+                    $linkInvoice = $resPayment['invoiceUrl'];
                     $externalId = $resPayment['externalReference'];
                     $paymentId = $resPayment['id'];
                     $orderNumber = $bling->getOrderByOrder($dto->numberOrder, $blingToken);
@@ -123,12 +126,13 @@ class CreateWebhookCase
                         $orderNumber['data'][0]['id'],
                         $paymentId,
                         $linkPdf,
+                        $linkInvoice,
                         $resOrder,
                         $blingToken
                     );
             }
         }
-        
+        var_dump($resPayment);
         return $webhookModel->create([
             'storePublicId' => $this->params['storePublicId'],
             'date' => date('Y-m-d H:i:s'),

@@ -46,8 +46,9 @@ class WebhookBlingDto{
         $this->numberOrder = $order->numero ?? null;
         $this->status = $order->situacao ?? null;
         $this->paymentPlans = count($plot) ?? 1;
-        $this->amount = $plot[0]->parcela->valor ?? null;
+        $this->amount = ($order->totalvenda ?? 0) + 3.50;
         $this->dueDate = $plot[0]->parcela->dataVencimento ?? null;
         $this->typePayment = $plot[0]->parcela->forma_pagamento->descricao ?? null;
+        var_dump($plot);
     }
 }

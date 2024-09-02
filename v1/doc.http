@@ -204,7 +204,21 @@ data={
                         {
                             "parcela": {
                                 "idLancamento": "21013846458",
-                                "valor": "264.90",
+                                "valor": "300.45",
+                                "dataVencimento": "2024-09-03",
+                                "obs": "",
+                                "destino": "1",
+                                "forma_pagamento": {
+                                    "id": "2779137",
+                                    "descricao": "BOLETO BRADESCO",
+                                    "codigoFiscal": "15"
+                                }
+                            }
+                        },
+                        {
+                            "parcela": {
+                                "idLancamento": "21013846458",
+                                "valor": "200.45",
                                 "dataVencimento": "2024-09-03",
                                 "obs": "",
                                 "destino": "1",
