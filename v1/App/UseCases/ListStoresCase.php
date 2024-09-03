@@ -17,6 +17,6 @@ class ListStoresCase
     {
         $storeModel = new Store();
         $list = $storeModel->list($this->params['page'], $this->params['itemsPerPage']);
-        return array_map("App\Model\Store::porter", $list);
+        return array_map("App\Model\Store::porterList", $list);
     }
 }

@@ -194,6 +194,20 @@ $router->post('/v1/webhook/create/{storePublicId}', FactorRouter::add([
     "run" => "execute"
 ]));
 
+$router->get('/v1/payment/list/{externalId}', FactorRouter::add([
+    "params" => [
+        ["externalId", "External ID é obrigatório"],
+        ["cpfCnpj", "CPF ou CNPJ é obrigatório"]
+
+    ],
+    "message" => ["Erro ao listar informações", "Listado com sucesso"],
+    "case" => \App\UseCases\PaymentList::class,
+    "validations" => [
+        ["validateStorePublicId", "Store Public ID inválido"]
+    ],
+    "run" => "execute"
+]));
+
 $router->get('/v1/webhook/list', FactorRouter::add([
     "params" => [
         ["page", "Página é obrigatória"],

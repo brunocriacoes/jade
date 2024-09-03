@@ -236,6 +236,11 @@ data={
     }
 }
 
+#### [X] Listar Boletos ####
+GET {{base}}/payment/list/asaas-loja-do-alagoano?cpfCnpj=85260731093
+Content-Type: application/json
+token: asdlkgnsdfgksnfdghpksdfgnh
+
 #### [X] Listar Webhook ####
 GET {{base}}/webhook/list?page=1&itemsPerPage=100
 Content-Type: application/json

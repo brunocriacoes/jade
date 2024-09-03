@@ -485,6 +485,11 @@ class Asaas
 		return $this->get("/payments/{$id}", []);
 	}
 
+	public function getPayments($data = [])
+	{
+		return $this->get("/payments", $data);
+	}
+
 	public function postPayments(
 		string $external_fk,
 		string $tipo_pagamento,
@@ -509,7 +514,10 @@ class Asaas
 			"billingType" => $tipo_pagamento,
 			"value" => $valor,
 			"dueDate" => date('Y-m-d', strtotime('+7 days')),
-			"description" => "Doação Unica",
+			"description" => "TAXA DE BOLETO INCLUSA R$3,50\r\n
+MULTA APÓS 1 DIA DE VENCIMENTO.\r\n
+JUROS MENSAL APÓS 1 DIA DE VENCIMENTO.\r\n
+NEGATIVAÇÃO E PROTESTO APÓS 30 DIAS DE VENCIDO",
 			"externalReference" => $external_fk,
 			"postalService" => false,
 		];
@@ -548,6 +556,20 @@ class Asaas
 			$payload['installmentCount'] = $installmentCount;
 			$payload['installmentValue'] = ($valor / $installmentCount);
 		}
+		$payload['discount'] = [
+			"value" => 2,
+			"dueDateLimitDays" => 30,
+			"type" => "PERCENTAGE"
+		];
+
+		$payload['interest'] = [
+			"value" => 1,
+		];
+		$payload["fine"] = [
+			"value" => 1,
+			"type" => "PERCENTAGE"
+		];
+
 		return $this->post('/payments', $payload);
 	}
 

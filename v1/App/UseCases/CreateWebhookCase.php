@@ -103,7 +103,6 @@ class CreateWebhookCase
                             '',
                             $dto->paymentPlans
                     );
-                    var_dump($dto->paymentPlans);
                     $linkPdf = $resPayment['bankSlipUrl'];
                     $linkInvoice = $resPayment['invoiceUrl'];
                     $externalId = $resPayment['externalReference'];
@@ -132,7 +131,6 @@ class CreateWebhookCase
                     );
             }
         }
-        var_dump($resPayment);
         return $webhookModel->create([
             'storePublicId' => $this->params['storePublicId'],
             'date' => date('Y-m-d H:i:s'),

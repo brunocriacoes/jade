@@ -59,4 +59,16 @@ class Store extends Model
 
         ];
     }
+    
+    static function porterList($payload)
+    {
+        return [
+            "publicId" => $payload["publicId"],
+            "externalId" => $payload["externalId"],
+            "name" => $payload["name"],
+            "email" => $payload["email"],
+            "status" => $payload["status"]
+
+        ];
+    }
 }
