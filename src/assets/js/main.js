@@ -7,6 +7,7 @@ import { render as render_form_loja } from "./pages/form_loja.js";
 import { render as render_listar_loja } from "./pages/listar_loja.js";
 import { render as render_listar_webhook } from "./pages/listar_webhook.js";
 import { render as render_recuperar_senha } from "./pages/recuperar_senha.js";
+import { render as render_redefinir_senha } from "./pages/redefinir_senha.js";
 import { render as render_obrigado } from "./pages/obrigado.js";
 
 window.onload = (_) => {
@@ -20,5 +21,6 @@ window.onload = (_) => {
   app.add("listar_webhook", render_listar_webhook);
   app.add("home", render_listar_loja);
   app.add("recuperar_senha", render_recuperar_senha);
+  app.add("redefinir-senha", render_redefinir_senha);
   app.add("obrigado", render_obrigado);
 };
