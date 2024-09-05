@@ -7,6 +7,8 @@ use App\Template\RecoverPass as Email;
 use App\help\Keygen;
 use App\Model\User;
 
+
+
 class RecoverPass {
 
     public $email;

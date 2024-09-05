@@ -7,6 +7,7 @@ use App\Model\Store;
 
 class PaymentList
 {
+    
     private $params;
 
     public function __construct($params)

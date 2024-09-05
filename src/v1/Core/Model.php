@@ -19,7 +19,7 @@ class Model
         $this->db_type = Env::get('DB_TYPE');
         $this->db_host = Env::get('DB_HOST');
         $this->db_name = Env::get('DB_NAME');
-        $this->db_user = Env::get('DB_USER');
+        $this->db_user = Env::get('MYSQL_USER');
         $this->db_pass = Env::get('DB_PASS');
         $this->db_port = Env::get('DB_PORT');
         $this->connect();

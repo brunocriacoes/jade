@@ -7,7 +7,7 @@ POST {{base}}/login
 Content-Type: application/json
 
 {
-    "email": "maxsouza150@hotmail.com",
+    "email": "maximizebot@gmail.com",
     "pass": "Password@1"
 }
 
@@ -248,7 +248,7 @@ token: asdlkgnsdfgksnfdghpksdfgnh
 
 
 #### [ ] Recuparar senha ####
-POST {{base}}/recover/pass
+POST {{base}}/recover/pass?debug=true
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
