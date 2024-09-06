@@ -50,7 +50,7 @@ class PaymentList
         $payload = [];
         if(isset($resCustomer['data'][0]['id'])){
             $customerId = $resCustomer['data'][0]['id'];
-            $resPayment = $asaas->getPayments(['customer'=>$customerId]);
+            $resPayment = $asaas->getPayments(['customer'=>$customerId, 'limit'=>99]);
             $payload = array_map(function($p){
                 return [
                     "vencimento"=>$p['dueDate'],

@@ -84,7 +84,7 @@ class CreateWebhookCase
         if($status){
             if ($this->isAttended($dto)) {
                 $dto = $this->isCustomer($dto, $asaas);
-                if($dto->typePayment == 'BOLETO BRADESCO'){
+                if($dto->typePayment == 'BOLETO ASAAS'){
                     $resPayment = $asaas->postPayments(
                             $dto->numberOrder,
                             'BOLETO',

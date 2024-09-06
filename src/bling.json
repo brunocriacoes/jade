@@ -1,82 +1,71 @@
-data={
-    "retorno": {
-        "pedidos": [
-            {
-                "pedido": {
-                    "desconto": "0,00",
-                    "observacoes": "",
-                    "observacaointerna": "",
-                    "data": "2024-08-29",
-                    "numero": "212",
-                    "numeroOrdemCompra": "",
-                    "vendedor": "",
-                    "valorfrete": "0.00",
-                    "outrasdespesas": "0.00",
-                    "totalprodutos": "264.90",
-                    "totalvenda": "264.90",
-                    "situacao": "Atendido",
-                    "dataSaida": "2024-08-29",
-                    "cliente": {
-                        "id": "16923756638",
-                        "nome": "Teste Asaas",
-                        "cnpj": "85260731093",
-                        "ie": "",
-                        "indIEDest": "9",
-                        "rg": "",
-                        "endereco": "Rua Graciliano Ramos",
-                        "numero": "536",
-                        "complemento": "",
-                        "cidade": "Arapiraca",
-                        "bairro": "Baix\u00e3o",
-                        "cep": "57305365",
-                        "uf": "AL",
-                        "email": "maxsouza150@hotmail.com",
-                        "celular": "(82) 99621-1554",
-                        "fone": ""
-                    },
-                    "transporte": {
-                        "tipo_frete": "R",
-                        "qtde_volumes": "0",
-                        "peso_bruto": "0.000"
-                    },
-                    "itens": [
-                        {
-                            "item": {
-                                "codigo": "AN35625-16",
-                                "descricao": "ANEL COM 4 AROS ENTRELA\u00c7ADOS  DOIS LISOS DOIS CRAVEJADOS TAMANHO:16",
-                                "quantidade": "1.0000",
-                                "valorunidade": "264.9000000000",
-                                "precocusto": "35.2800000000",
-                                "descontoItem": "0.00",
-                                "un": "P\u00c7",
-                                "pesoBruto": "0.02000",
-                                "largura": "10",
-                                "altura": "0",
-                                "profundidade": "4",
-                                "descricaoDetalhada": "",
-                                "unidadeMedida": "cm",
-                                "gtin": ""
-                            }
-                        }
-                    ],
-                    "parcelas": [
-                        {
-                            "parcela": {
-                                "idLancamento": "21013846458",
-                                "valor": "264.90",
-                                "dataVencimento": "2024-09-03",
-                                "obs": "",
-                                "destino": "1",
-                                "forma_pagamento": {
-                                    "id": "2779137",
-                                    "descricao": "BOLETO BRADESCO",
-                                    "codigoFiscal": "15"
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
+{
+    "statusCode": 201,
+    "response": {
+      "next": true,
+      "message": "Listado com sucesso",
+      "payload": [
+        {
+          "vencimento": "2024-09-12",
+          "urlBoleto": "https://sandbox.asaas.com/i/4yvq898vfl8m6axe",
+          "valor": 207.4
+        },
+        {
+          "vencimento": "2024-10-12",
+          "urlBoleto": "https://sandbox.asaas.com/i/tre6i1dwcuj3l52b",
+          "valor": 134.2
+        },
+        {
+          "vencimento": "2024-09-12",
+          "urlBoleto": "https://sandbox.asaas.com/i/9ny95ky5p4q2dsth",
+          "valor": 134.2
+        },
+        {
+          "vencimento": "2024-09-12",
+          "urlBoleto": "https://sandbox.asaas.com/i/l8v5da06w86rw77k",
+          "valor": 207.4
+        },
+        {
+          "vencimento": "2024-09-10",
+          "urlBoleto": "https://sandbox.asaas.com/i/f27rvy1g8n1kx3vm",
+          "valor": 113.4
+        },
+        {
+          "vencimento": "2024-09-10",
+          "urlBoleto": "https://sandbox.asaas.com/i/9tgxoluomhel2rep",
+          "valor": 113.4
+        },
+        {
+          "vencimento": "2024-10-09",
+          "urlBoleto": "https://sandbox.asaas.com/i/rn71hr1i5bf82vm7",
+          "valor": 37.26
+        },
+        {
+          "vencimento": "2024-09-09",
+          "urlBoleto": "https://sandbox.asaas.com/i/be1ubjeap28hjlio",
+          "valor": 37.26
+        },
+        {
+          "vencimento": "2024-10-09",
+          "urlBoleto": "https://sandbox.asaas.com/i/74j90x7nwl9ondj8",
+          "valor": 143.43
+        },
+        {
+          "vencimento": "2024-09-09",
+          "urlBoleto": "https://sandbox.asaas.com/i/mo6uf6speqc8rwre",
+          "valor": 143.43
+        }
+      ]
+    },
+    "request": {
+      "url": "https://api.paramour.com.br/v1/payment/list/asaas-loja-do-alagoano?cpfCnpj=85260731093",
+      "method": "GET",
+      "headers": {},
+      "timeout": false
     }
-}
+  }
+
+
+  https://api.paramour.com.br/v1/payment/list/asaas-{{maker_external_id}}?cpfCnpj={{cpf_cnpj_client}}
+
+
+  https://api.paramour.com.br/v1/payment/list/asaas-loja-do-alagoano?cpfCnpj=85260731093

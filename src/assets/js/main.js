@@ -22,3 +22,7 @@ window.onload = (_) => {
   app.add("recuperar_senha", render_recuperar_senha);
   app.add("obrigado", render_obrigado);
 };
+
+const teste = []
+
+teste.length
