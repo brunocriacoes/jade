@@ -509,14 +509,23 @@ class Asaas
 		$installmentCount = 1,
 		array $split = []
 	) {
+		$multa = $valor * 0.05;
+		$juros_mensal = 0.03; 
+		$dias_atraso = 1;
+		$juros_dia = ($juros_mensal / 30) * $dias_atraso;
+		$valor_com_juros = $valor + ($valor * $juros_dia);
+
+		$multa = number_format($multa, 2, ',', '.');
+		$valor_com_juros = number_format($valor_com_juros, 2, ',', '.');
+		
 		$payload = [
 			"customer" => $customer,
 			"billingType" => $tipo_pagamento,
 			"value" => $valor,
 			"dueDate" => date('Y-m-d', strtotime('+7 days')),
 			"description" => "TAXA DE BOLETO INCLUSA R$3,50\r\n
-MULTA APÓS 1 DIA DE VENCIMENTO.\r\n
-JUROS MENSAL APÓS 1 DIA DE VENCIMENTO.\r\n
+MULTA APÓS 1 DIA DE VENCIMENTO R$ $multa  \r\n
+JUROS MENSAL APÓS 1 DIA DE VENCIMENTO R$ $valor_com_juros\r\n
 NEGATIVAÇÃO E PROTESTO APÓS 30 DIAS DE VENCIDO",
 			"externalReference" => $external_fk,
 			"postalService" => false,
