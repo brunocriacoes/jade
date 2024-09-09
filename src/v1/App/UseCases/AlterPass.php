@@ -37,8 +37,8 @@ class AlterPass {
     function execute() {
         $user = new User();
         $data = $user->getByEmail($this->email);
-        $publicId = $data['publicId'];        
-        $pass = Crip::pass($this->pass);
+        $publicId = $data['publicId'];
+        $pass = $this->pass;
         $user->set($publicId,[
             "pass" => $pass
         ]);

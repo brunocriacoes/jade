@@ -16,15 +16,17 @@ class SendMail
 
         try {
             $mail->isSMTP();
-            $mail->Host       = getenv('SMTP_HOST');            // Host SMTP
+            $mail->Host       = getenv('SMTP_HOST');
             $mail->SMTPAuth   = true;
-            $mail->Username   = getenv('SMTP_USER');            // Email do remetente
-            $mail->Password   = getenv('SMTP_PASSWORD');        // Senha ou App Password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS
-            $mail->Port       = 587;                            // Porta SMTP
+            $mail->Username   = getenv('SMTP_USER');
+            $mail->Password   = getenv('SMTP_PASSWORD');
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port       = 587;
 
-            $mail->setFrom(getenv('SMTP_USER'), 'Teste de Envio');   // Email do remetente
-            $mail->addAddress($to);           // Email do destinatário
+            $mail->setFrom(getenv('SMTP_USER'), 'Teste de Envio');
+            $mail->addAddress($to);
+
+            $mail->CharSet = 'UTF-8';
 
             $mail->isHTML(true);
             $mail->Subject = $subject;

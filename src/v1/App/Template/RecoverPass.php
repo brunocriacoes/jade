@@ -13,21 +13,23 @@ class RecoverPass
     static function body($code, $email)
     {
         $content = "";
-        $content .= "Olá, " . PHP_EOL;
-        $content .= PHP_EOL;
-        $content .= "Recebemos uma solicitação para redefinir a senha associada ao seu e-mail. " . PHP_EOL;
-        $content .= "Para concluir o processo de recuperação, por favor, clique no link abaixo: " . PHP_EOL;
-        $content .= PHP_EOL;
-        $content .= "https://api.paramour.com.br/redefinir-senha.html?codigo={$code}&email={$email} " . PHP_EOL;
-        $content .= PHP_EOL;
-        $content .= "Se você não solicitou a redefinição de senha, por favor, ignore este e-mail. " . PHP_EOL;
-        $content .= "Nenhuma ação adicional é necessária. " . PHP_EOL;
-        $content .= PHP_EOL;
-        $content .= "Este link é válido por 24 horas. Após esse período, " . PHP_EOL;
-        $content .= "você precisará solicitar novamente a recuperação de senha. " . PHP_EOL;
-        $content .= PHP_EOL;
-        $content .= "Atenciosamente,   " . PHP_EOL;
-        $content .= "Paramour " . PHP_EOL;
-        return $content;
+        $content .= "Olá,<br>";
+        $content .= "<br>";
+        $content .= "Recebemos uma solicitação para redefinir a senha associada ao seu e-mail.<br>";
+        $content .= "Para concluir o processo de recuperação, por favor, clique no link abaixo:<br>";
+        $content .= "<br>";
+        $content .= "<a href='https://api.paramour.com.br/redefinir-senha.html?codigo={$code}&email={$email}'>Clique aqui para redefinir sua senha</a><br>";
+        $content .= "<br>";
+        $content .= "Se você não solicitou a redefinição de senha, por favor, ignore este e-mail.<br>";
+        $content .= "Nenhuma ação adicional é necessária.<br>";
+        $content .= "<br>";
+        $content .= "Este link é válido por 15 minutos. Após esse período,<br>";
+        $content .= "você precisará solicitar novamente a recuperação de senha.<br>";
+        $content .= "<br>";
+        $content .= "Atenciosamente,<br>";
+        $content .= "Paramour<br>";
+
+
+        return mb_convert_encoding($content, 'UTF-8', 'auto');
     }
 }
