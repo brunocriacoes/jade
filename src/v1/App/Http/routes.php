@@ -66,7 +66,8 @@ $router->post('/v1/store/update', FactorRouter::add([
         ["name", "Nome é obrigatório"],
         ["email", "E-mail é obrigatório"],
         ["blingClientId", "Client ID Bling é obrigatório"],
-        ["blingClientSecret", "Client Secret Bling é obrigatório"]
+        ["blingClientSecret", "Client Secret Bling é obrigatório"],
+        ["asaasApiKey", "Informe Api key do Asaas"]
     ],
     "message" => ["Erro ao atualizar loja", "Loja atualizada com sucesso"],
     "case" => \App\UseCases\UpdateStoreCase::class,

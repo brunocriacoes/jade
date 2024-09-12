@@ -108,6 +108,7 @@ class CreateWebhookCase
                     $externalId = $resPayment['externalReference'];
                     $paymentId = $resPayment['id'];
                     $orderNumber = $bling->getOrderByOrder($dto->numberOrder, $blingToken);
+                    var_dump($orderNumber);
                     if(isset($orderNumber["error"])){
                         $resRefresh = $bling->refreshToken($blingClientId, $blingClientSecret, $blingRefreshToken);
                         $token = $resRefresh["access_token"];

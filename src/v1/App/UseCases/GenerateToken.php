@@ -19,12 +19,14 @@ class GenerateToken
     }
 
     public function isExist(){
-        $externalId = $this->store->getByExternalId($this->externalId);
+        $id = str_replace('bling-','', $this->externalId);
+        $externalId = $this->store->getByExternalId($id);
         return count($externalId) > 0;
     }
 
     public function execute(){
-        $store = $this->store->getByExternalId($this->externalId)[0];
+        $id = str_replace('bling-','', $this->externalId);
+        $store = $this->store->getByExternalId($id)[0];
         $bling = new Bling();
         $resBling = $bling->generateToken($store['blingClientId'],$store['blingClientSecret'],$this->code);
         if(!isset($resBling['error'])){
@@ -33,6 +35,7 @@ class GenerateToken
                 "blingRefreshToken"=>$resBling['refresh_token'],
             ]);
         }
+
         return $resBling;
     }
 }

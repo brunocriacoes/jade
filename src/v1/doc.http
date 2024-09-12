@@ -135,109 +135,98 @@ token: asdlkgnsdfgksnfdghpksdfgnh
 }
 
 #### [ ] Criar Webhook ####
-POST {{base}}/webhook/create/bling-loja-do-alagoano?debug=true
+POST {{base}}/webhook/create/bling-paramour-bahia
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 data={
-    "retorno": {
-        "pedidos": [
+  "retorno": {
+    "pedidos": [
+      {
+        "pedido": {
+          "desconto": "0,00",
+          "observacoes": "",
+          "observacaointerna": "",
+          "data": "2024-09-12",
+          "numero": "13837",
+          "numeroOrdemCompra": "",
+          "vendedor": "VENDA PARA FUNCIONÁRIOS",
+          "valorfrete": "0.00",
+          "outrasdespesas": "0.00",
+          "totalprodutos": "27.45",
+          "totalvenda": "27.45",
+          "situacao": "Atendido",
+          "dataSaida": "2024-09-12",
+          "cliente": {
+            "id": "15725544369",
+            "nome": "LUCAS HENRIQUE DOMINGOS",
+            "cnpj": "13511660696",
+            "ie": "",
+            "indIEDest": "9",
+            "rg": "18769766",
+            "endereco": "Rua Ipupiara",
+            "numero": "53",
+            "complemento": "APT",
+            "cidade": "Salvador",
+            "bairro": "Jardim das Margaridas",
+            "cep": "41502385",
+            "uf": "BA",
+            "email": "lucaas.henrique2014@gmail.com",
+            "celular": "(31) 97343-4734",
+            "fone": "(31) 97343-4734"
+          },
+          "pagamento": {
+            "categoria": "Vendas de mercadorias"
+          },
+          "transporte": {
+            "tipo_frete": "R",
+            "qtde_volumes": "0",
+            "peso_bruto": "0.000"
+          },
+          "itens": [
             {
-                "pedido": {
-                    "desconto": "0,00",
-                    "observacoes": "",
-                    "observacaointerna": "",
-                    "data": "2024-08-29",
-                    "numero": "212",
-                    "numeroOrdemCompra": "",
-                    "vendedor": "",
-                    "valorfrete": "0.00",
-                    "outrasdespesas": "0.00",
-                    "totalprodutos": "264.90",
-                    "totalvenda": "264.90",
-                    "situacao": "Atendido",
-                    "dataSaida": "2024-08-29",
-                    "cliente": {
-                        "id": "16923756638",
-                        "nome": "Teste Asaas",
-                        "cnpj": "85260731093",
-                        "ie": "",
-                        "indIEDest": "9",
-                        "rg": "",
-                        "endereco": "Rua Graciliano Ramos",
-                        "numero": "536",
-                        "complemento": "",
-                        "cidade": "Arapiraca",
-                        "bairro": "Baix\u00e3o",
-                        "cep": "57305365",
-                        "uf": "AL",
-                        "email": "maxsouza150@hotmail.com",
-                        "celular": "(82) 99621-1554",
-                        "fone": ""
-                    },
-                    "transporte": {
-                        "tipo_frete": "R",
-                        "qtde_volumes": "0",
-                        "peso_bruto": "0.000"
-                    },
-                    "itens": [
-                        {
-                            "item": {
-                                "codigo": "AN35625-16",
-                                "descricao": "ANEL COM 4 AROS ENTRELA\u00c7ADOS  DOIS LISOS DOIS CRAVEJADOS TAMANHO:16",
-                                "quantidade": "1.0000",
-                                "valorunidade": "264.9000000000",
-                                "precocusto": "35.2800000000",
-                                "descontoItem": "0.00",
-                                "un": "P\u00c7",
-                                "pesoBruto": "0.02000",
-                                "largura": "10",
-                                "altura": "0",
-                                "profundidade": "4",
-                                "descricaoDetalhada": "",
-                                "unidadeMedida": "cm",
-                                "gtin": ""
-                            }
-                        }
-                    ],
-                    "parcelas": [
-                        {
-                            "parcela": {
-                                "idLancamento": "21013846458",
-                                "valor": "300.45",
-                                "dataVencimento": "2024-09-03",
-                                "obs": "",
-                                "destino": "1",
-                                "forma_pagamento": {
-                                    "id": "2779137",
-                                    "descricao": "BOLETO BRADESCO",
-                                    "codigoFiscal": "15"
-                                }
-                            }
-                        },
-                        {
-                            "parcela": {
-                                "idLancamento": "21013846458",
-                                "valor": "200.45",
-                                "dataVencimento": "2024-09-03",
-                                "obs": "",
-                                "destino": "1",
-                                "forma_pagamento": {
-                                    "id": "2779137",
-                                    "descricao": "BOLETO BRADESCO",
-                                    "codigoFiscal": "15"
-                                }
-                            }
-                        }
-                    ]
-                }
+              "item": {
+                "codigo": "1203126000",
+                "descricao": "BRINCO FORMATO FOLHA COM DETALHES EM 3D",
+                "quantidade": "1.0000",
+                "valorunidade": "27.4500000000",
+                "precocusto": "5.1700000000",
+                "descontoItem": "0.00",
+                "un": "PAR",
+                "pesoBruto": "0.00000",
+                "largura": "0",
+                "altura": "0",
+                "profundidade": "0",
+                "descricaoDetalhada": "",
+                "unidadeMedida": "cm",
+                "gtin": ""
+              }
             }
-        ]
-    }
+          ],
+          "parcelas": [
+            {
+              "parcela": {
+                "idLancamento": "21116306556",
+                "valor": "27.45",
+                "dataVencimento": "2024-09-13",
+                "obs": "",
+                "destino": "1",
+                "forma_pagamento": {
+                  "id": "6640310",
+                  "descricao": "BOLETO ASAAS",
+                  "codigoFiscal": "99"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
 }
 
 #### [X] Listar Boletos ####
-GET {{base}}/payment/list/asaas-loja-do-alagoano?cpfCnpj=85260731093
+GET {{base}}/payment/list/asaas-paramour-bahia?cpfCnpj=13511660696
 Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
@@ -273,8 +262,8 @@ Content-Type: application/json
 token: asdlkgnsdfgksnfdghpksdfgnh
 
 {
-    "externalId" : "loja-do-alagoano1",
-    "code" : "3d894267f2a7b3c248425eafe8c35fbcec9c537b"
+    "externalId" : "bling-paramour-bahia",
+    "code" : "b6ea4294640cb66326d40d95e80a56f949f4e578"
 }
 
 #### [ ] Subscribe Bling ####
