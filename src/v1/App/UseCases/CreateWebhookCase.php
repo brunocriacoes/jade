@@ -68,7 +68,7 @@ class CreateWebhookCase
     {
         $webhookModel = new Webhook();
         $store = new Store();
-        $urlApi = 'https://sandbox.asaas.com/api/v3';
+        $urlApi = 'https://api.asaas.com/api/v3';
         
         $storeExternalId = $this->removePrefix($this->params['storePublicId']);
         $tokenApi = $store->getByExternalId($storeExternalId)[0]['asaasApiKey'];

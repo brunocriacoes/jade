@@ -41,7 +41,7 @@ class PaymentList
     public function execute()
     {
         $store = new Store();
-        $urlApi = 'https://sandbox.asaas.com/api/v3';
+        $urlApi = 'https://api.asaas.com/api/v3';
         
         $storeExternalId = $this->removePrefix($this->params['externalId']);
         $tokenApi = $store->getByExternalId($storeExternalId)[0]['asaasApiKey'];
